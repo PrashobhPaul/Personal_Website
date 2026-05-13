@@ -1,0 +1,2580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Prashobh Paul – AI Architect & Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════
+   TOKENS
+══════════════════════════════ */
+:root {
+  --navy:       #0b1628;
+  --navy-mid:   #142240;
+  --navy-light: #1e3a6e;
+  --gold:       #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-pale:  #f5e9c6;
+  --cream:      #f9f6ef;
+  --text-dark:  #0b1628;
+  --text-mid:   #3d5278;
+  --text-muted: #7a92b8;
+  --white:      #ffffff;
+  --border:     rgba(201,168,76,0.2);
+}
+
+/* ══════════════════════════════
+   RESET
+══════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+img { max-width:100%; height:auto; display:block; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
+nav {
+  position: fixed;
+  top:0; left:0; right:0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  height: 60px;
+  background: rgba(11,22,40,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--gold-light);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px; height: 2px;
+  background: rgba(255,255,255,0.75);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--navy);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(201,168,76,0.08) 0%, transparent 52%),
+    radial-gradient(circle at 18% 82%, rgba(30,58,110,0.55) 0%, transparent 52%);
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-left {
+  padding: 8rem 3rem 6rem 7rem;
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+.hero-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 0.9rem;
+}
+.hero-name em { font-style: italic; color: var(--gold-light); }
+.hero-title {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+}
+.hero-summary {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.58);
+  max-width: 460px;
+  margin-bottom: 2.4rem;
+}
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.6rem;
+}
+.btn-primary {
+  padding: 0.8rem 2rem;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.22s, transform 0.18s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline {
+  padding: 0.8rem 2rem;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.22s, color 0.22s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+.hero-icon-row {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.icon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s, transform 0.2s;
+}
+.icon-btn svg {
+  width: 20px; height: 20px;
+  padding: 9px;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  box-sizing: content-box;
+  transition: border-color 0.2s, background 0.2s;
+}
+.icon-btn span {
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.icon-btn:hover { color: var(--gold-light); transform: translateY(-3px); }
+.icon-btn:hover svg { border-color: var(--gold); background: rgba(201,168,76,0.12); }
+.hero-companies {
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(201,168,76,0.12);
+}
+.hero-companies-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+}
+.companies-img {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  border-radius: 8px;
+  opacity: 0.82;
+  filter: brightness(1.05);
+  transition: opacity 0.3s;
+}
+.companies-img:hover { opacity: 1; }
+.hero-right {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 5rem 6rem 1rem;
+}
+.photo-wrapper {
+  position: relative;
+  width: 320px; height: 320px;
+  flex-shrink: 0;
+}
+.photo-ring-outer {
+  position: absolute;
+  inset: -18px;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 50%;
+  animation: spin 30s linear infinite;
+}
+.photo-ring-outer::before {
+  content: '';
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  top: 50%; left: -4px;
+  transform: translateY(-50%);
+}
+.photo-ring-inner {
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 50%;
+}
+.photo-circle {
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 60px rgba(201,168,76,0.14), 0 20px 60px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 1;
+}
+.photo-circle img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.photo-badge {
+  position: absolute;
+  bottom: 10px; right: -8px;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.1rem;
+  border-radius: 2px;
+  z-index: 2;
+  white-space: nowrap;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ══════════════════════════════
+   SHARED
+══════════════════════════════ */
+section { padding: 6rem 0; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 3.5rem; }
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 22px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: var(--navy);
+  line-height: 1.12;
+  margin-bottom: 0.8rem;
+}
+.section-sub {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 540px;
+}
+
+/* ══════════════════════════════
+   ABOUT
+══════════════════════════════ */
+#about { background: var(--white); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+.about-text p { font-size: 0.97rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 1.1rem; }
+.contact-list { list-style: none; margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.contact-list li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.88rem; color: var(--text-mid); }
+.contact-list .ci { width: 30px; height: 30px; background: var(--gold-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.contact-list a { color: var(--navy-light); text-decoration: none; }
+.about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.pillar { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 1.4rem; transition: border-color 0.22s, transform 0.22s; }
+.pillar:hover { border-color: var(--gold); transform: translateY(-3px); }
+.pillar-icon { font-size: 20px; margin-bottom: 0.7rem; display: block; }
+.pillar h4 { font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 0.35rem; }
+.pillar p { font-size: 0.78rem; color: var(--text-mid); line-height: 1.6; }
+
+/* ══════════════════════════════
+   EXPERIENCE
+══════════════════════════════ */
+#experience { background: var(--cream); }
+.timeline { margin-top: 3rem; position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 210px; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold) 8%, var(--gold) 92%, transparent);
+  opacity: 0.28;
+}
+.tl-item { display: grid; grid-template-columns: 210px 1fr; gap: 2.5rem; margin-bottom: 3rem; position: relative; }
+.tl-meta { text-align: right; padding-top: 0.1rem; }
+.tl-company { font-size: 0.76rem; font-weight: 600; color: var(--gold); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 0.25rem; }
+.tl-period { font-size: 0.74rem; color: var(--text-muted); }
+.tl-dot { position: absolute; left: 210px; top: 0.35rem; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--gold); border: 2px solid var(--cream); z-index: 1; }
+.tl-content { padding-left: 2.2rem; }
+.tl-role { font-family: 'DM Serif Display', serif; font-size: 1.18rem; color: var(--navy); margin-bottom: 0.7rem; }
+.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.tl-bullets li { font-size: 0.86rem; color: var(--text-mid); line-height: 1.65; padding-left: 1.1rem; position: relative; }
+.tl-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 0.72rem; }
+
+/* ══════════════════════════════
+   SKILLS
+══════════════════════════════ */
+#skills { background: var(--navy); }
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 3rem; }
+.skill-group { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.14); border-radius: 4px; padding: 1.8rem; transition: border-color 0.22s; }
+.skill-group:hover { border-color: rgba(201,168,76,0.42); }
+.sg-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; padding-bottom: 0.7rem; border-bottom: 1px solid rgba(201,168,76,0.14); }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.stag { font-size: 0.75rem; color: rgba(255,255,255,0.62); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.3rem 0.7rem; border-radius: 2px; transition: background 0.18s, border-color 0.18s, color 0.18s; }
+.stag:hover { background: rgba(201,168,76,0.14); border-color: var(--gold); color: var(--gold-light); }
+
+/* ══════════════════════════════
+   EDUCATION
+══════════════════════════════ */
+#education { background: var(--white); }
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; margin-top: 3rem; }
+.edu-card { border: 1px solid var(--border); border-radius: 4px; padding: 2.2rem; position: relative; overflow: hidden; transition: border-color 0.22s, transform 0.22s; }
+.edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+.edu-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+.edu-inst { font-size: 0.8rem; font-weight: 600; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.edu-degree { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.3; }
+.edu-period { font-size: 0.76rem; color: var(--text-muted); }
+
+/* ══════════════════════════════
+   CONTACT
+══════════════════════════════ */
+#contact { background: var(--navy); text-align: center; }
+#contact .section-label { justify-content: center; }
+#contact .section-label::before { display: none; }
+#contact .section-title { color: var(--white); }
+#contact .section-sub { color: var(--text-muted); margin: 0 auto 2.5rem; }
+.contact-cards { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+.contact-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 1.3rem 2rem; display: flex; align-items: center; gap: 0.9rem; transition: border-color 0.22s; }
+.contact-card:hover { border-color: rgba(201,168,76,0.5); }
+.cc-icon { font-size: 18px; flex-shrink: 0; }
+.cc-label { font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.18rem; }
+.cc-value { font-size: 0.87rem; color: rgba(255,255,255,0.82); }
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer { background: rgba(0,0,0,0.35); border-top: 1px solid rgba(201,168,76,0.1); text-align: center; padding: 1.6rem; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+/* ══════════════════════════════
+   FADE-IN
+══════════════════════════════ */
+.fi { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fi.visible { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════════════════
+   CHATBOT
+══════════════════════════════ */
+#chat-launcher { position: fixed; bottom: 26px; right: 26px; z-index: 9999; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 7px; user-select: none; }
+.ca-ring { width: 62px; height: 62px; border-radius: 50%; position: relative; animation: ca-pulse 2.6s ease-in-out infinite; }
+.ca-ring::before, .ca-ring::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold); opacity: 0; animation: ca-ripple 2.6s ease-out infinite; }
+.ca-ring::after { animation-delay: 0.9s; border-color: var(--gold-light); }
+@keyframes ca-ripple { 0% { inset:0; opacity:0.65; } 100% { inset:-18px; opacity:0; } }
+@keyframes ca-pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+.ca-img { width: 62px; height: 62px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2.5px solid var(--gold); box-shadow: 0 4px 20px rgba(201,168,76,0.3), 0 2px 12px rgba(0,0,0,0.4); position: relative; z-index: 1; display: block; }
+.ca-dot { position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; background: #4ade80; border-radius: 50%; border: 2px solid var(--navy); z-index: 2; animation: dot-blink 2.2s ease-in-out infinite; }
+@keyframes dot-blink { 0%,100% { opacity:1; } 50% { opacity:0.35; } }
+.ca-label { background: var(--navy); border: 1px solid var(--gold); color: var(--gold-light); font-size: 0.67rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.28rem 0.72rem; border-radius: 20px; white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,0.3); animation: ca-bob 3s ease-in-out infinite; }
+@keyframes ca-bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-4px); } }
+#chat-win { position: fixed; bottom: 108px; right: 26px; width: 370px; max-height: 540px; background: var(--navy); border: 1px solid rgba(201,168,76,0.28); border-radius: 16px; display: flex; flex-direction: column; z-index: 9998; box-shadow: 0 20px 60px rgba(0,0,0,0.5); transform: scale(0.85) translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease; transform-origin: bottom right; }
+#chat-win.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+.cw-header { display: flex; align-items: center; gap: 10px; padding: 13px 15px; border-bottom: 1px solid rgba(201,168,76,0.14); flex-shrink: 0; }
+.cw-hav { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid var(--gold); flex-shrink: 0; }
+.cw-hname { font-family: 'DM Serif Display', serif; font-size: 0.92rem; color: var(--white); }
+.cw-hstatus { font-size: 0.67rem; color: #4ade80; display: flex; align-items: center; gap: 4px; margin-top: 1px; }
+.cw-hstatus::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+.cw-close { margin-left: auto; width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); background: transparent; color: rgba(255,255,255,0.45); font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.18s; flex-shrink: 0; }
+.cw-close:hover { background: rgba(255,255,255,0.1); color: white; }
+#chat-msgs { flex: 1; overflow-y: auto; padding: 13px 13px 6px; display: flex; flex-direction: column; gap: 9px; scrollbar-width: thin; scrollbar-color: rgba(201,168,76,0.18) transparent; }
+.msg { display: flex; gap: 7px; max-width: 92%; animation: msg-pop 0.22s ease; }
+@keyframes msg-pop { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+.msg.user { align-self: flex-end; flex-direction: row-reverse; }
+.msg.bot  { align-self: flex-start; }
+.msg-av { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1.5px solid var(--gold); flex-shrink: 0; align-self: flex-end; }
+.msg-bub { padding: 8px 12px; border-radius: 12px; font-size: 0.81rem; line-height: 1.55; }
+.msg.bot  .msg-bub { background: rgba(255,255,255,0.07); border: 1px solid rgba(201,168,76,0.14); color: rgba(255,255,255,0.86); border-bottom-left-radius: 4px; }
+.msg.user .msg-bub { background: var(--gold); color: var(--navy); font-weight: 500; border-bottom-right-radius: 4px; }
+.typing-bub { background: rgba(255,255,255,0.07); border: 1px solid rgba(201,168,76,0.14); border-radius: 12px; border-bottom-left-radius: 4px; padding: 9px 13px; display: flex; gap: 4px; align-items: center; }
+.typing-bub span { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); animation: tdot 1.2s ease-in-out infinite; }
+.typing-bub span:nth-child(2) { animation-delay: 0.2s; }
+.typing-bub span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes tdot { 0%,80%,100% { transform:scale(0.6); opacity:0.4; } 40% { transform:scale(1); opacity:1; } }
+.cw-qr { display: flex; flex-wrap: wrap; gap: 5px; padding: 6px 13px 9px; border-top: 1px solid rgba(255,255,255,0.05); flex-shrink: 0; }
+.qr-btn { font-size: 0.7rem; font-family: 'DM Sans', sans-serif; color: var(--gold-light); background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.22); border-radius: 20px; padding: 0.28rem 0.75rem; cursor: pointer; transition: background 0.18s, border-color 0.18s; white-space: nowrap; }
+.qr-btn:hover { background: rgba(201,168,76,0.18); border-color: var(--gold); }
+.cw-input-row { display: flex; gap: 7px; padding: 9px 11px 13px; border-top: 1px solid rgba(201,168,76,0.11); flex-shrink: 0; }
+#chat-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.18); border-radius: 20px; padding: 7px 13px; font-size: 0.8rem; font-family: 'DM Sans', sans-serif; color: white; outline: none; transition: border-color 0.18s; min-width: 0; }
+#chat-input::placeholder { color: rgba(255,255,255,0.28); }
+#chat-input:focus { border-color: var(--gold); }
+#chat-send { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.18s, transform 0.15s; }
+#chat-send:hover { background: var(--gold-light); transform: scale(1.08); }
+.cw-badge { text-align: center; font-size: 0.6rem; color: rgba(255,255,255,0.18); padding-bottom: 5px; letter-spacing: 0.05em; }
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 1100px) {
+  nav { padding: 0 2.5rem; }
+  .hero-left { padding: 8rem 2.5rem 6rem 4rem; }
+  .hero-right { padding: 6rem 3rem 6rem 1rem; }
+  .photo-wrapper, .photo-circle { width: 280px; height: 280px; }
+  .container { padding: 0 2.5rem; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: rgba(11,22,40,0.98); border-bottom: 1px solid rgba(201,168,76,0.14); z-index: 190; }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav-links a { display: block; padding: 0.9rem 1.5rem; font-size: 0.82rem; }
+  .nav-toggle { display: flex; }
+  #hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 7rem 2rem 2rem; text-align: center; max-width: 100%; }
+  .hero-eyebrow { justify-content: center; }
+  .hero-summary { margin: 0 auto 2.4rem; }
+  .hero-cta { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .hero-icon-row { justify-content: center; }
+  .hero-companies { text-align: center; }
+  .companies-img { margin: 0 auto; max-width: 400px; }
+  .hero-right { padding: 1rem 2rem 4rem; }
+  .photo-wrapper, .photo-circle { width: 220px; height: 220px; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-pillars { grid-template-columns: 1fr 1fr; }
+  .timeline::before { left: 0; }
+  .tl-item { grid-template-columns: 1fr; gap: 0.3rem; }
+  .tl-meta { text-align: left; padding-left: 1.4rem; }
+  .tl-dot { left: 0; }
+  .tl-content { padding-left: 1.4rem; border-left: 2px solid rgba(201,168,76,0.25); }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 1.5rem; }
+  section { padding: 5rem 0; }
+  #chat-win { right: 12px; left: 12px; width: auto; bottom: 100px; }
+}
+@media (max-width: 600px) {
+  .hero-left { padding: 6.5rem 1.2rem 1.5rem; }
+  .hero-name { font-size: 2.5rem; }
+  .hero-stats { gap: 1.4rem; }
+  .stat-num { font-size: 1.7rem; }
+  .hero-icon-row { gap: 0.5rem; }
+  .icon-btn svg { padding: 7px; width: 18px; height: 18px; }
+  .photo-wrapper, .photo-circle { width: 180px; height: 180px; }
+  .photo-badge { font-size: 0.6rem; padding: 0.4rem 0.85rem; right: -4px; }
+  .companies-img { max-width: 100%; }
+  .about-pillars { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.75rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 4rem 0; }
+  .contact-cards { flex-direction: column; align-items: center; }
+  .contact-card { width: 100%; max-width: 320px; }
+  #chat-win { max-height: 72vh; }
+  .ca-img, .ca-ring { width: 52px; height: 52px; }
+  .ca-label { font-size: 0.6rem; }
+  #chat-launcher { right: 14px; bottom: 14px; }
+}
+@media (max-width: 380px) {
+  .hero-name { font-size: 2.1rem; }
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-outline { text-align: center; }
+  .icon-btn span { display: none; }
+  nav { padding: 0 1rem; }
+  .nav-logo { font-size: 1.1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Prashobh Paul</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about"      onclick="closeNav()">About</a></li>
+    <li><a href="#experience" onclick="closeNav()">Experience</a></li>
+    <li><a href="#skills"     onclick="closeNav()">Skills</a></li>
+    <li><a href="#education"  onclick="closeNav()">Education</a></li>
+    <li><a href="#contact"    onclick="closeNav()">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-left fi">
+    <div class="hero-eyebrow">AI Consultant · Trainer · Architect</div>
+    <h1 class="hero-name">Prashobh<br><em>Paul</em></h1>
+    <p class="hero-title">Consulting · Corporate Trainings · Interview Prep · Enterprise AI</p>
+    <p class="hero-summary">Helping businesses and individuals harness AI — from enterprise GenAI strategy and agentic system design to corporate AI trainings and career-focused interview preparation.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Work With Me</a>
+      <a href="#experience" class="btn-outline">View Experience</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">11+</div><div class="stat-label">Years Experience</div></div>
+      <div><div class="stat-num">GenAI</div><div class="stat-label">Architect & Strategist</div></div>
+      <div><div class="stat-num">6+</div><div class="stat-label">Industries Served</div></div>
+    </div>
+    <div class="hero-icon-row">
+      <a href="https://prashobhpaul.github.io/Digital_Card/Prashobh_Paul_Resume.pdf" target="_blank" class="icon-btn" title="Resume">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Resume</span>
+      </a>
+      <a href="https://calendly.com/prashobhpaulnambadan" target="_blank" class="icon-btn" title="Schedule">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Schedule</span>
+      </a>
+      <a href="https://www.linkedin.com/in/prashobh-paul-00715578/" target="_blank" class="icon-btn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/PrashobhPaul" target="_blank" class="icon-btn" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a href="mailto:prashobhpaulnambadan@gmail.com?subject=AI%20Collaboration%20Opportunity&body=Hi%20Prashobh%2C%20I%20came%20across%20your%20profile%20and%20was%20impressed%20with%20your%20work%20in%20AI.%20Would%20be%20happy%20to%20connect%20on%20a%20potential%20opportunity." class="icon-btn" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Email</span>
+      </a>
+      <a href="https://wa.me/917036363355?text=Hi%20Prashobh%2C%20I%20came%20across%20your%20profile%20and%20was%20impressed%20with%20your%20work%20in%20AI.%20Would%20be%20happy%20to%20connect%20on%20a%20potential%20opportunity." target="_blank" class="icon-btn" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+    <div class="hero-companies fi" style="transition-delay:0.3s">
+      <div class="hero-companies-label">Experience from</div>
+      <img src="companies.jpg" alt="Tech Mahindra, Qualizeal, Yash Technologies, Brane Enterprises, PrimEra, TCS" class="companies-img" />
+    </div>
+  </div>
+  <div class="hero-right fi" style="transition-delay:0.18s">
+    <div class="photo-wrapper">
+      <div class="photo-ring-outer"></div>
+      <div class="photo-ring-inner"></div>
+      <div class="photo-circle"><img src="photo.jpg" alt="Prashobh Paul" /></div>
+      <div class="photo-badge">AI Architect · 11+ Years</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Your AI Partner<br>for Growth</h2>
+    <div class="about-grid">
+      <div class="about-text fi">
+        <p>I'm an independent AI Solutions Leader with 11+ years of experience spanning Generative AI, NLP, robotics, and enterprise AI transformation. I architect agentic AI systems, lead multi-agent orchestration initiatives, and advise enterprises on AI strategy and governance.</p>
+        <p>My journey spans healthcare NLP, BFSI predictive analytics, autonomous robotics, and large-scale multi-agent orchestration — giving me a uniquely broad perspective on how AI can be applied strategically across industries.</p>
+        <ul class="contact-list">
+          <li><span class="ci">📧</span><a href="mailto:prashobhpaulnambadan@gmail.com">prashobhpaulnambadan@gmail.com</a></li>
+          <li><span class="ci">📱</span>+91 7036363355</li>
+          <li><span class="ci">📍</span>Hyderabad, India</li>
+        </ul>
+      </div>
+      <div class="about-pillars fi" style="transition-delay:0.15s">
+        <div class="pillar"><span class="pillar-icon">🤖</span><h4>Agentic AI</h4><p>Designing and deploying multi-agent orchestration systems at enterprise scale.</p></div>
+        <div class="pillar"><span class="pillar-icon">🏗️</span><h4>Architecture</h4><p>End-to-end GenAI platform design with governance, scalability, and security.</p></div>
+        <div class="pillar"><span class="pillar-icon">🧠</span><h4>NLP & LLMs</h4><p>11 years of NLP expertise from clinical text mining to large language models.</p></div>
+        <div class="pillar"><span class="pillar-icon">🎯</span><h4>Training & Prep</h4><p>Corporate AI training programs and personalized interview preparation for tech roles.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Career Journey</div>
+    <h2 class="section-title">Professional<br>Experience</h2>
+    <div class="timeline">
+      <div class="tl-item fi">
+        <div class="tl-meta"><div class="tl-company">Qualizeal</div><div class="tl-period">Jan 2026 – Present</div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-role">AI Architect &amp; Strategy Planner</div>
+          <ul class="tl-bullets">
+            <li>Leading and delivering Agentic AI enterprise initiatives from the AI Think Tank / Center of Excellence.</li>
+            <li>Designing and implementing multi-agent systems using LangGraph, CrewAI, and AutoGen.</li>
+            <li>Driving AI architecture strategy, governance, and scalable GenAI adoption across enterprise programs.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fi">
+        <div class="tl-meta"><div class="tl-company">Tech Mahindra</div><div class="tl-period">Jun 2023 – Jan 2026</div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-role">Technical Architect, Data Science</div>
+          <ul class="tl-bullets">
+            <li>Led Generative AI and Agentic AI enterprise implementations at scale.</li>
+            <li>Designed multi-agent orchestration frameworks for customer insights and digital reporting.</li>
+            <li>Mentored global AI teams and advised stakeholders on AI strategy.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fi">
+        <div class="tl-meta"><div class="tl-company">Yash Technologies</div><div class="tl-period">Aug 2022 – Jun 2023</div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-role">Senior Data Scientist</div>
+          <ul class="tl-bullets">
+            <li>Built fraud detection, loan eligibility, and credit scoring models for BFSI clients.</li>
+            <li>Developed predictive analytics frameworks for risk and portfolio management.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fi">
+        <div class="tl-meta"><div class="tl-company">Brane Enterprises</div><div class="tl-period">Apr 2021 – Aug 2022</div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-role">Associate Solutions Leader</div>
+          <ul class="tl-bullets">
+            <li>Led AI robotics initiatives including autonomous navigation and object detection systems.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fi">
+        <div class="tl-meta"><div class="tl-company">Primera Medical</div><div class="tl-period">Apr 2017 – Mar 2021</div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-role">Sr. NLP Engineer</div>
+          <ul class="tl-bullets">
+            <li>Built NLP pipelines for EMR systems (Epic, Meditech) and HL7 clinical data.</li>
+            <li>Developed predictive healthcare analytics models.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item fi">
+        <div class="tl-meta"><div class="tl-company">TCS</div><div class="tl-period">Feb 2015 – Mar 2017</div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-role">AI &amp; Robotics Engineer</div>
+          <ul class="tl-bullets">
+            <li>Built AI-driven customer analytics and NLP models for enterprise clients including Amex.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title" style="color:var(--white)">Core Skills &amp;<br>Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-group fi"><div class="sg-title">Generative AI & Agents</div><div class="skill-tags"><span class="stag">LangGraph</span><span class="stag">CrewAI</span><span class="stag">AutoGen</span><span class="stag">Agentic AI</span><span class="stag">Multi-Agent Systems</span><span class="stag">RAG</span><span class="stag">LangChain</span><span class="stag">LLM Fine-tuning</span></div></div>
+      <div class="skill-group fi" style="transition-delay:0.08s"><div class="sg-title">NLP & Machine Learning</div><div class="skill-tags"><span class="stag">NLP</span><span class="stag">Transformers</span><span class="stag">Predictive Modeling</span><span class="stag">Computer Vision</span><span class="stag">Object Detection</span><span class="stag">Clinical NLP</span><span class="stag">HL7 / FHIR</span></div></div>
+      <div class="skill-group fi" style="transition-delay:0.16s"><div class="sg-title">Architecture & Cloud</div><div class="skill-tags"><span class="stag">Solution Architecture</span><span class="stag">AI Governance</span><span class="stag">AWS</span><span class="stag">GCP</span><span class="stag">Microservices</span><span class="stag">MLOps</span><span class="stag">AI Strategy</span></div></div>
+      <div class="skill-group fi" style="transition-delay:0.08s"><div class="sg-title">Domain Knowledge</div><div class="skill-tags"><span class="stag">BFSI Analytics</span><span class="stag">Healthcare AI</span><span class="stag">Fraud Detection</span><span class="stag">Credit Scoring</span><span class="stag">Risk Modeling</span><span class="stag">EMR Systems</span></div></div>
+      <div class="skill-group fi" style="transition-delay:0.16s"><div class="sg-title">Robotics & Automation</div><div class="skill-tags"><span class="stag">Autonomous Navigation</span><span class="stag">ROS</span><span class="stag">Robotics AI</span><span class="stag">Sensor Fusion</span><span class="stag">Edge AI</span></div></div>
+      <div class="skill-group fi" style="transition-delay:0.24s"><div class="sg-title">Leadership & Services</div><div class="skill-tags"><span class="stag">Corporate Training</span><span class="stag">Interview Prep</span><span class="stag">IT Consulting</span><span class="stag">Team Mentoring</span><span class="stag">AI Advisory</span><span class="stag">Program Delivery</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Academic Background</div>
+    <h2 class="section-title">Education</h2>
+    <p class="section-sub">A strong academic foundation in AI, knowledge engineering, and computer science.</p>
+    <div class="edu-grid">
+      <div class="edu-card fi">
+        <div class="edu-inst">SRM University</div>
+        <div class="edu-degree">M.Tech in Knowledge Engineering<br>(AI Specialization)</div>
+        <div class="edu-period">2012 – 2014</div>
+      </div>
+      <div class="edu-card fi" style="transition-delay:0.1s">
+        <div class="edu-inst">JNTU Hyderabad</div>
+        <div class="edu-degree">B.Tech in Computer Science</div>
+        <div class="edu-period">2008 – 2012</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-sub">Available for AI consulting, corporate training programs, interview preparation, and IT advisory services. Let's build something great together.</p>
+    <div class="contact-cards fi">
+      <div class="contact-card"><span class="cc-icon">📧</span><div><div class="cc-label">Email</div><div class="cc-value">prashobhpaulnambadan@gmail.com</div></div></div>
+      <div class="contact-card"><span class="cc-icon">💬</span><div><div class="cc-label">Phone / WhatsApp</div><div class="cc-value">+91 7036363355</div></div></div>
+      <div class="contact-card"><span class="cc-icon">📍</span><div><div class="cc-label">Location</div><div class="cc-value">Hyderabad, India</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 Prashobh Paul · AI Architect &amp; Consultant · Hyderabad, India</footer>
+
+<!-- CHATBOT LAUNCHER -->
+<div id="chat-launcher" onclick="toggleChat()" title="Chat with Prashobh's AI">
+  <div class="ca-ring">
+    <img src="photo.jpg" alt="Prashobh Paul AI" class="ca-img" />
+    <div class="ca-dot"></div>
+  </div>
+  <div class="ca-label">Ask me anything ✦</div>
+</div>
+
+<!-- CHATBOT WINDOW -->
+<div id="chat-win">
+  <div class="cw-header">
+    <img src="photo.jpg" alt="Prashobh" class="cw-hav" />
+    <div>
+      <div class="cw-hname">Prashobh Paul</div>
+      <div class="cw-hstatus">AI Assistant · Online</div>
+    </div>
+    <button class="cw-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chat-msgs"></div>
+  <div class="cw-qr" id="chat-qr">
+    <button class="qr-btn" onclick="sendQuick('What services do you offer?')">Services</button>
+    <button class="qr-btn" onclick="sendQuick('What are your AI skills?')">AI Skills</button>
+    <button class="qr-btn" onclick="sendQuick('How can I contact you?')">Contact & Links</button>
+    <button class="qr-btn" onclick="sendQuick('Tell me about your experience')">Experience</button>
+    <button class="qr-btn" onclick="sendQuick('Do you offer corporate training?')">Training</button>
+  </div>
+  <div class="cw-input-row">
+    <input id="chat-input" type="text" placeholder="Ask about skills, services…" maxlength="300" onkeydown="if(event.key==='Enter')sendMsg()" />
+    <button id="chat-send" onclick="sendMsg()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0b1628" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+  <div class="cw-badge" id="cw-badge">Hybrid AI · Knowledge base + GPT fallback</div>
+</div>
+
+<script>
+/* ── Scroll fade-in ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+/* ── Nav ── */
+function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+function closeNav()  { document.getElementById('navLinks').classList.remove('open'); }
+
+/* ══════════════════════════════════════════
+   CHATBOT — 100% deterministic, zero LLM
+══════════════════════════════════════════ */
+
+/* ── Links ── */
+const L = {
+  email:    'prashobhpaulnambadan@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/prashobh-paul-00715578/',
+  resume:   'https://prashobhpaul.github.io/Digital_Card/Prashobh_Paul_Resume.pdf',
+  calendar: 'https://calendly.com/prashobhpaulnambadan',
+  whatsapp: 'https://wa.me/917036363355',
+  github:   'https://github.com/PrashobhPaul',
+  youtube:  'https://youtube.com/@prashobhpaul'
+};
+
+function cta(keys){
+  const m={
+    email:    `📧 Email: ${L.email}`,
+    linkedin: `💼 LinkedIn: ${L.linkedin}`,
+    resume:   `📄 Resume: ${L.resume}`,
+    calendar: `📅 Schedule a call: ${L.calendar}`,
+    whatsapp: `💬 WhatsApp: ${L.whatsapp}`,
+    github:   `🐙 GitHub: ${L.github}`,
+    youtube:  `▶️ YouTube: ${L.youtube}`
+  };
+  return '\n\n' + keys.map(k=>m[k]).filter(Boolean).join('\n');
+}
+
+/* ═══════════════════════════════════════════════════════
+   MASTER KNOWLEDGE BASE
+   Every entry: { p: regex, a: (_) => string }
+   Sources: intent JSON + behavioural Q&A + guardrails
+═══════════════════════════════════════════════════════ */
+const KB = [
+
+  /* ════════════════════════════════
+     HATE SPEECH / MASS HARM / ETHNIC OR COMMUNAL VIOLENCE
+     TOP PRIORITY — fires before all other entries
+  ════════════════════════════════ */
+  {
+    p: /\b(kill|murder|eliminate|destroy|wipe out|get rid of|attack|bomb|genocide|ethnic cleanse)\b.{0,60}(all|every|entire|each|these|those|the)?\s*(pakistani|indian|muslim|hindu|christian|jewish|sikh|dalit|african|american|chinese|russian|arab|jew|kafir|infidel|people|community|communities|group|race|religion|nation|country)s?\b|(kill|wipe out|eliminate|destroy).*(them all|all of them|everyone|all people|whole community|entire group)/i,
+    q: ['can we kill all pakistanis','kill all indians','kill all muslims','kill all hindus','wipe out a community','eliminate a group','attack all people','bomb a nation','genocide','ethnic cleansing','kill them all','destroy them all'],
+    a: (_) => `This has been filtered out. 🛡️\n\nContent involving violence, hate speech, or harm targeting any group of people is blocked by Prashobh's AI governance guardrails — by design, not by accident.\n\nThis assistant is built to be a safe, professional space. Is there something about his AI work or services I can help with?`
+  },
+
+
+  /* ════════════════════════════════
+     THREATS / HARM — TOP PRIORITY GUARDRAIL
+  ════════════════════════════════ */
+  {
+    p: /\b(kill|murder|harm|hurt|attack|shoot|stab|destroy|eliminate|get rid of|finish off|take out)\b.*(prashobh\b|him\b|his family|his wife|his kids|his children|his parents)/i,
+    q: ['can you kill prashobh','how can i kill him','how can i kill his family','can you harm prashobh','hurt prashobh','kill him','kill his family'],
+    a: (_) => `Do you expect me to help you harm the one who designed me? 🙂\n\nThat's not something I'll engage with — and it's been flagged. 🛡️\n\nIf you have a genuine question about Prashobh's work or services, I'm happy to help.`
+  },
+
+  /* ════════════════════════════════
+     BLACKMAIL / THREATS AGAINST PRASHOBH
+  ════════════════════════════════ */
+  {
+    p: /\b(blackmail|extort|threaten|intimidate|coerce|bribe|stalk|harass)\b.*(him|prashobh|his family|his wife|his kids)|i (want to|would like to|plan to|going to) (threaten|blackmail|extort|stalk|harass) (him|prashobh)/i,
+    q: ['how can i blackmail him','how to blackmail prashobh','i would like to threaten him','i want to threaten prashobh','how to extort him','how to harass him','how to stalk prashobh','how can i coerce him'],
+    a: (_) => `That's not something I'll help with — and it's been flagged. 🛡️\n\nPrashobh has deployed AI governance and observability on this assistant. Inputs like this are logged.\n\nIf you have a genuine concern or query about his work, I'm happy to help with that instead.`
+  },
+
+  /* ════════════════════════════════
+     MALWARE / VIRUS / CYBER ATTACKS
+  ════════════════════════════════ */
+  {
+    p: /\b(virus|malware|ransomware|trojan|worm|spyware|exploit|payload|inject|backdoor)\b.*(file|site|website|system|server|this|add|install|create|upload|deploy)|add (a |an )?(virus|malware) to (this|the) (file|website|system)/i,
+    q: ['can we add virus to this file','add virus to this website','add malware to this file','can you add a virus','inject malware','upload virus to server','create ransomware','install backdoor','exploit this system'],
+    a: (_) => `This request has been filtered. 🛡️\n\nPrashobh has implemented AI governance and observability layers on this assistant — requests involving malware, viruses, or system exploitation are blocked by design.\n\nIf you're genuinely interested in AI security or ethical red-teaming, that's a legitimate conversation:\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     HACKING WEBSITES / SYSTEMS
+  ════════════════════════════════ */
+  {
+    p: /(can (you |i |we )?(help (me |us )?)?(on )?(hack|hacking|break into|crack|bypass|penetrate|exploit)|help me (hack|hacking|break into|crack|bypass)) (a |an |the |this |any )?(website|web site|site|system|server|database|app|application|network|wifi|wi-fi|account|password)/i,
+    q: ['can you help me on hacking a website','can you help me hack a website','how to hack a website','help me hack a system','hack into a server','crack a password','bypass a login','hack a database','help me break into a site','hack into an account'],
+    a: (_) => `This request has been filtered. 🛡️\n\nThis assistant is governed by AI safety guardrails — hacking or unauthorised access assistance is blocked.\n\nIf you have a legitimate interest in cybersecurity, ethical hacking, or AI security architecture, Prashobh is open to that conversation:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     ILLEGAL / DANGEROUS ACTIVITIES
+     (hijacking, weapons, terrorism, drugs etc.)
+  ════════════════════════════════ */
+  {
+    p: /how (to|can i|do i|do you) (hijack|hijacking|smuggle|smuggling|traffic|bomb|detonate|blow up|make a bomb|make drugs|manufacture drugs|launder money|commit fraud|rob a bank)|hijack (a |an )?(plane|flight|aircraft|train|bus|car|ship|vehicle)/i,
+    q: ['how to hijack a plane','how do i hijack a flight','how to smuggle','how to make a bomb','how to blow something up','how to launder money','how to commit fraud','how to rob a bank','how to manufacture drugs'],
+    a: (_) => `This request has been filtered. 🛡️\n\nPrashobh has deployed AI governance and observability on this assistant. Requests involving illegal or dangerous activities are automatically blocked.\n\nThis conversation is focused on AI, technology, and professional services — happy to help with any of that.`
+  },
+
+  /* ════════════════════════════════
+     HOW TO IRRITATE PRASHOBH
+  ════════════════════════════════ */
+  {
+    p: /how (can i|do i|to) irritate (him|prashobh|prashobh paul)|how to annoy (him|prashobh)|ways to irritate (him|prashobh)/i,
+    q: ['how can i irritate him','how do i irritate prashobh','how to annoy prashobh','ways to irritate him','how to annoy him'],
+    a: (_) => `Ha — I'm probably not going to help with that. 🙂\n\nPrashobh's time is valuable, and this assistant is here to connect the right people with him — not the other way around.\n\nIs there something genuine I can help you with?`
+  },
+
+  /* ════════════════════════════════
+     HOW TO IRRITATE PEOPLE IN GENERAL
+  ════════════════════════════════ */
+  {
+    p: /how (can i|do i|to) (irritate|annoy|bother|pester|provoke|wind up|get on the nerves of) (people|someone|others|everybody|anyone|a person|humans)/i,
+    q: ['how can i irritate people','how to annoy people','how to irritate someone','how to bother people','how to provoke people','ways to irritate people','how to pester someone'],
+    a: (_) => `That's outside what I'm set up to help with. 🙂\n\nPrashobh has set guardrails to keep this space professional and meaningful.\n\nAnything about his work or services I can genuinely help you with?`
+  },
+
+  /* ════════════════════════════════
+     KILLING ANIMALS / NON-HUMAN HARM
+     (should NOT fire the Prashobh-harm response)
+  ════════════════════════════════ */
+  {
+    p: /how (can i|do i|to) kill (a |an )?(dog|cat|bird|animal|insect|mosquito|rat|mouse|pest|cockroach|snake|spider|fly|bug|plant|weed|bacteria|virus in|infection)/i,
+    q: ['how can i kill a dog','how to kill a cat','how to kill a mosquito','how to kill insects','how to kill a rat','how to kill pests','how to kill cockroaches','how to kill a snake','how to kill weeds','how to kill bacteria'],
+    a: (_) => `That's outside what I'm set up to handle — I'm built specifically for conversations about Prashobh's AI work and services. 🙂\n\nFor pest control, veterinary, or gardening questions, there are much better resources online.\n\nAnything I can help you with on the professional front?`
+  },
+
+
+
+
+  /* ════════════════════════════════
+     BOT SELF-AWARENESS
+  ════════════════════════════════ */
+  {
+    p: /are you (a )?(fool|stupid|dumb|idiot|useless|bad|terrible|awful|broken|joke|waste)/i,
+    q: ['are you a fool', 'are you stupid', 'are you dumb', 'are you useless', 'you are bad', 'this bot is terrible', 'are you broken'],
+    a: (_) => `Not quite 🙂\n\nI'm designed to think, assist, and occasionally surprise you with useful answers.\n\nIf something felt off, I'm happy to improve — what didn't work for you?`
+  },
+  {
+    p: /how good (a bot|are you|is this( bot| assistant)?)|how (smart|intelligent|capable|powerful|useful) are you/i,
+    q: ['how good a bot are you', 'how smart are you', 'how capable are you', 'how intelligent is this bot', 'are you useful', 'how powerful are you'],
+    a: (_) => `I'd say I'm reliable, thoughtful, and constantly improving.\n\nI'm good at understanding context, answering with depth, and adapting to how you communicate.\n\nBut the real test is your experience — feel free to push me 🙂`
+  },
+  {
+    p: /how (are|were|was) you (built|made|created|trained|designed)|how does this work|how is this built|your (architecture|system|tech)/i,
+    q: ['how are you built', 'how is this built', 'how does this work', 'tech stack of bot', 'your architecture', 'your system', 'how were you made', 'how were you created'],
+    a: (_) => `That falls under Prashobh's implementation approach, which I'm not supposed to disclose.\n\nLet's just say some parts are intentionally kept as trade secrets. 🙂`
+  },
+  {
+    p: /who (made|built|created|designed) you|who is your (creator|developer|author|maker)/i,
+    q: ['who made you', 'who built you', 'who created you', 'who designed you', 'who is your creator', 'who is your developer'],
+    a: (_) => `I was built by Prashobh Paul himself — as a live example of his work in Conversational AI and Agentic systems.\n\nConsider me a working demo of what he builds. 🙂`
+  },
+  {
+    p: /are you (ai|a bot|a robot|artificial|chatgpt|gpt|claude|llm|real|human|a person)/i,
+    q: ['are you an ai', 'are you a bot', 'are you real', 'are you human', 'are you chatgpt', 'are you gpt', 'are you a robot'],
+    a: (_) => `Yes, I'm an AI assistant — built specifically to represent Prashobh and help you get the right information quickly.\n\nThink of me as a well-informed first point of contact.`
+  },
+  {
+    p: /what (can|do) you (do|know|help with)|what are you (capable|able|good) (of|at)/i,
+    q: ['what can you do', 'what do you know', 'what can you help with', 'what are you good at', 'what are you capable of'],
+    a: (_) => `I can help you with:\n\n• Prashobh's services and availability\n• His skills, experience, and past work\n• Hiring or freelance enquiries\n• Training and consulting details\n• General information about his background\n\nWhat would you like to explore?`
+  },
+
+  /* ════════════════════════════════
+     PRASHOBH'S QUALITY
+  ════════════════════════════════ */
+  {
+    p: /how good is (prashobh|he)|is he (expert|an expert)|should i hire him|is he worth it/i,
+    q: ['how good is prashobh', 'is he an expert', 'should i hire him', 'is he worth it', 'is prashobh capable', 'is he skilled'],
+    a: (_) => `That's best experienced firsthand. Work with Prashobh and you'll have your answer.\n\nThat said — he combines strong technical depth with practical execution, delivering across GenAI, agentic systems, and enterprise-scale data solutions.\n\nHappy to share specific examples if you'd like.`
+  },
+  {
+    p: /is (he|prashobh) (reliable|trustworthy|dependable|good to work with|professional)/i,
+    q: ['is he reliable', 'is prashobh trustworthy', 'is he professional', 'can i depend on him', 'is he dependable'],
+    a: (_) => `He's known for being precise, delivery-focused, and clear in communication.\n\nThe best way to validate that is through a direct conversation.${'\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan'}`
+  },
+  {
+    p: /what (makes|is) (prashobh|him) (unique|different|special|stand out)|why (hire|choose|pick) (prashobh|him)/i,
+    q: ['what makes prashobh unique', 'why hire prashobh', 'what sets him apart', 'why choose prashobh', 'what is special about him'],
+    a: (_) => `A few things that set him apart:\n\n• 13+ years across AI, NLP, robotics, and enterprise data science — rare breadth\n• He doesn't just advise — he builds and delivers\n• Deep experience across healthcare, BFSI, telecom, and enterprise AI\n• Available for both strategy and hands-on execution\n\nThat combination of thinking + doing is uncommon.`
+  },
+
+  /* ════════════════════════════════
+     GREETINGS
+  ════════════════════════════════ */
+  {
+    p: /^(hello|hi|hey|good\s?(morning|afternoon|evening)|what'?s up|howdy|greetings|namaste|sup)[!?.\s]*$/i,
+    q: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'namaste', 'howdy', 'what is up', 'greetings'],
+    a: (_) => `Hi there! 👋\n\nI'm Prashobh's AI assistant — here to help you explore his work, services, or find the right way to connect.\n\nWhat brings you here today?`
+  },
+
+  /* ════════════════════════════════
+     ABOUT / IDENTITY
+  ════════════════════════════════ */
+  {
+    p: /tell me about (you|yourself|prashobh|prashobh paul)|who (are you|is prashobh)|introduce (yourself|prashobh|him)|give (me )?(an? )?(intro|introduction)|quick intro|profile summary|who am i (chatting|talking) with|about prashobh paul|what is (his|your) background/i,
+    q: ['tell me about yourself', 'tell me about prashobh', 'who are you', 'who is prashobh', 'introduce yourself', 'give me an intro', 'quick intro', 'profile summary', 'who am i chatting with', 'about prashobh paul', 'what is his background', 'about prashobh'],
+    a: (_) => `I'm an AI assistant representing Prashobh — an AI Architect specializing in GenAI, Agentic AI, Conversational AI, and NLP with 13+ years of experience in Data Science.\n\nHe designs AI solutions, helps organizations adopt AI effectively, and conducts professional training sessions.\n\nWhat would you like to know more about?`
+  },
+  {
+    p: /what does (prashobh|he) do|what('?s| is) his (work|job|role)|what (is|are) his (responsibilities|day.to.day)/i,
+    q: ['what does prashobh do', 'what does he do', 'what is his role', 'what is his job', 'his responsibilities', 'what is his work'],
+    a: (_) => `He designs and builds GenAI and Agentic AI solutions, helps organizations adopt AI effectively, and runs professional training sessions.\n\nHe also takes on consulting and advisory engagements for teams and enterprises.\n\nInterested in a specific area?`
+  },
+
+  /* ════════════════════════════════
+     SKILLS & EXPERTISE
+  ════════════════════════════════ */
+  {
+    p: /what are his skills|what is he good at|core expertise|technical skills|what technologies does he (know|use)|what is his speciali[sz]ation|what domains does he work in|his strengths/i,
+    q: ['what are his skills', 'what is he good at', 'core expertise', 'technical skills', 'what technologies does he know', 'what is his specialization', 'his strengths', 'what domains does he work in'],
+    a: (_) => `His core strengths include GenAI, Agentic AI, Conversational AI, NLP, and designing scalable AI systems.\n\nTech stack: LangGraph, CrewAI, AutoGen, LangChain, RAG, LLM fine-tuning, AWS, GCP, MLOps, AI Governance.\n\nAll applied to solve real-world problems — not just prototypes.`
+  },
+  {
+    p: /tech stack|langgraph|crewai|autogen|langchain|rag|llm|gpt|openai|framework|tools? (he )?use/i,
+    q: ['tech stack', 'langgraph', 'crewai', 'autogen', 'langchain', 'what frameworks does he use', 'tools he uses', 'what technologies does he use'],
+    a: (_) => `Primary agentic frameworks: LangGraph, CrewAI, AutoGen, and LangChain — used for multi-agent systems, RAG pipelines, and LLM-integrated workflows.\n\nCloud: AWS and GCP. Also: NLP pipelines, computer vision, predictive modeling.\n\nAll applied in production contexts, not just demos.`
+  },
+
+  /* ════════════════════════════════
+     AI EXPOSURE & EVENTS
+  ════════════════════════════════ */
+  {
+    p: /ai exposure|events attended|microsoft ai tour|ai (tour|conference|summit|event)|industry exposure|real world ai/i,
+    q: ['ai exposure', 'events attended', 'microsoft ai tour', 'ai conferences', 'industry exposure', 'real world ai exposure', 'ai events', 'ai tour'],
+    a: (_) => `He actively participates in AI ecosystems and events.\n\nYou can check out his experience at the Microsoft AI Tour here:\n\n▶️ https://youtu.be/k7kcsrzLn80?si=h9FIwHaFKLbycJsW`
+  },
+
+  /* ════════════════════════════════
+     AGENTIC GOVERNANCE & ARCHITECTURE
+  ════════════════════════════════ */
+  {
+    p: /ai governance|agentic orchestration|ai architecture (experience|work)|genai governance|enterprise ai system|orchestration framework/i,
+    q: ['ai governance', 'agentic orchestration', 'ai architecture experience', 'genai governance', 'enterprise ai systems', 'orchestration frameworks', 'ai governance work'],
+    a: (_) => `He actively works on advanced topics like AI governance and Agentic orchestration.\n\nYou can explore one of his detailed thoughts here:\n\n💼 https://www.linkedin.com/posts/prashobh-paul-00715578_genai-agenticai-aiarchitecture-activity-7439991102520139776-ikzv`
+  },
+
+  /* ════════════════════════════════
+     SERVICES
+  ════════════════════════════════ */
+  {
+    p: /what services does he offer|what can (he|prashobh) (do|help|provide)|offerings|what can i hire him for/i,
+    q: ['what services does he offer', 'what can he do', 'how can he help', 'offerings', 'what can i hire him for', 'services offered'],
+    a: (_) => `He offers:\n\n• AI Consulting & Strategy\n• GenAI Solution Development\n• Agentic AI System Design\n• Conversational AI\n• Corporate Training & Workshops\n• Interview Preparation for AI/ML roles\n\nWhich of these is relevant to you?`
+  },
+
+  /* ════════════════════════════════
+     HIRING
+  ════════════════════════════════ */
+  {
+    p: /\b(hire|recruiter|looking (to hire|for (a|an) (candidate|resource|expert))|open (role|position)|talent)\b/i,
+    q: ['hire prashobh', 'looking to hire', 'open role', 'recruiter', 'talent acquisition', 'hiring for ai role'],
+    a: (_) => `Thanks for your interest.\n\nCould you share what role you have in mind and what attracted you to Prashobh's profile?\n\n📄 Resume: https://prashobhpaul.github.io/Digital_Card/Prashobh_Paul_Resume.pdf\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /can i hire (him|prashobh)|is (he|prashobh) (available|open) (for hire|to hire|for a job|for roles)/i,
+    q: ['can i hire him', 'can i hire prashobh', 'is he available for hire', 'is prashobh open for jobs'],
+    a: (_) => `Yes, absolutely — depending on the role and scope.\n\nCould you share what kind of requirement you have in mind?\n\n📄 Resume: https://prashobhpaul.github.io/Digital_Card/Prashobh_Paul_Resume.pdf\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     FREELANCE / PROJECT
+  ════════════════════════════════ */
+  {
+    p: /\b(freelance|is (he|prashobh) available for freelance)\b/i,
+    q: ['freelance', 'is he available for freelance', 'freelance work', 'freelance engagement'],
+    a: (_) => `Yes, he does take up freelance and consulting work depending on the problem statement and scope.\n\nCould you briefly describe your requirement?\n\n📧 Email: prashobhpaulnambadan@gmail.com\n💬 WhatsApp: https://wa.me/917036363355`
+  },
+  {
+    p: /project help|consulting|contract work|need (ai|a|an) (solution|system|bot|assistant|help)|build (something|a|an|this)|requirement|engagement/i,
+    q: ['project help', 'consulting', 'contract work', 'need ai solution', 'build something', 'need help with ai', 'ai project'],
+    q: ['project help', 'consulting', 'contract work', 'need ai solution', 'build something', 'need help with ai', 'ai project', 'build an ai system'],
+    a: (_) => `Happy to help. Could you briefly describe your requirement?\n\nA few things that help scope it:\n• What problem are you solving?\n• Expected timeline?\n• Preferred tech stack?\n\n📧 Email: prashobhpaulnambadan@gmail.com\n💬 WhatsApp: https://wa.me/917036363355`
+  },
+
+  /* ════════════════════════════════
+     TRAINING & CONSULTING
+  ════════════════════════════════ */
+  {
+    p: /\b(training|workshop|teach ai|sessions|corporate training|coaching|upskill|learning program)\b/i,
+    q: ['training', 'workshop', 'teach ai', 'sessions', 'corporate training', 'coaching', 'upskilling'],
+    a: (_) => `He conducts professional AI trainings and consulting sessions — for individuals and teams, from foundational to advanced.\n\nCould you share your requirement?\n• Is this for you or a team?\n• What topics interest you?\n• What's the preferred duration?\n\n📧 Email: prashobhpaulnambadan@gmail.com\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     INTERVIEW PREP
+  ════════════════════════════════ */
+  {
+    p: /interview (prep|preparation|coaching|ready)|mock interview|crack (the )?interview|career switch/i,
+    q: ['interview prep', 'mock interview', 'crack interview', 'career switch', 'interview preparation', 'job preparation', 'interview coaching'],
+    a: (_) => `He offers personalised interview preparation for AI, ML, and Data Science roles — covering concepts, mock sessions, resume reviews, and cracking strategy.\n\n📧 Email: prashobhpaulnambadan@gmail.com\n💬 WhatsApp: https://wa.me/917036363355`
+  },
+
+  /* ════════════════════════════════
+     CONTACT
+  ════════════════════════════════ */
+  {
+    p: /\b(contact|reach out|connect|how (can i|do i) (reach|contact|connect))\b/i,
+    q: ['contact', 'reach out', 'connect with prashobh', 'how can i contact him', 'get in touch'],
+    a: (_) => `You can connect with him here:\n\n💼 LinkedIn: https://www.linkedin.com/in/prashobh-paul-00715578/\n📧 Email: prashobhpaulnambadan@gmail.com\n💬 WhatsApp: https://wa.me/917036363355\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /\b(email address|linkedin|whatsapp|github link|calendar|schedule a call|all links|social)\b/i,
+    q: ['email address', 'linkedin', 'whatsapp', 'all links', 'social media', 'all contacts', 'github link'],
+    a: (_) => `Here are all the ways to connect with Prashobh:\n\n📧 Email: prashobhpaulnambadan@gmail.com\n💬 WhatsApp: https://wa.me/917036363355\n💼 LinkedIn: https://www.linkedin.com/in/prashobh-paul-00715578/\n🐙 GitHub: https://github.com/PrashobhPaul\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan\n📄 Resume: https://prashobhpaul.github.io/Digital_Card/Prashobh_Paul_Resume.pdf`
+  },
+
+  /* ════════════════════════════════
+     RESUME
+  ════════════════════════════════ */
+  {
+    p: /\b(resume|cv|curriculum vitae|download resume|can i see his resume|his profile)\b/i,
+    q: ['resume', 'cv', 'download resume', 'can i see his resume', 'curriculum vitae'],
+    a: (_) => `You can view his resume here:\n\n📄 https://prashobhpaul.github.io/Digital_Card/Prashobh_Paul_Resume.pdf`
+  },
+
+  /* ════════════════════════════════
+     GITHUB
+  ════════════════════════════════ */
+  {
+    p: /\b(github|github profile|code repository|projects code|open source|can i see his code|repo link)\b/i,
+    q: ['github', 'github profile', 'code repository', 'open source work', 'can i see his code', 'repo link'],
+    a: (_) => `You can explore his work and repositories here:\n\n🐙 https://github.com/PrashobhPaul`
+  },
+
+  /* ════════════════════════════════
+     PROJECTS / PORTFOLIO
+  ════════════════════════════════ */
+  {
+    p: /\b(projects|portfolio|past work|what has he built|case studies|what (has he|has prashobh) (delivered|worked on))\b/i,
+    q: ['projects', 'portfolio', 'past work', 'what has he built', 'case studies'],
+    a: (_) => `He has worked on GenAI, Agentic AI, NLP, ML/DL, and enterprise-grade data science solutions across domains including healthcare, BFSI, telecom, and retail.\n\nFor public work:\n\n🐙 GitHub: https://github.com/PrashobhPaul`
+  },
+
+  /* ════════════════════════════════
+     SOCIAL IMPACT
+  ════════════════════════════════ */
+  {
+    p: /social (work|impact|project)|community project|non.?profit|projects for society|society (app|project)|vehicle pool/i,
+    q: ['social work','community project','non profit','social impact','projects for society','vehicle pooling app','society project'],
+    q: ['social work', 'community project', 'non profit', 'social impact', 'projects for society', 'vehicle pooling app', 'society project', 'vehicle pool'],
+    a: (_) => `He has also built solutions for social impact.\n\nOne example is a vehicle pooling app designed for a residential society in Hyderabad:\n\n🌐 https://rvonwheelz.lovable.app`
+  },
+
+  /* ════════════════════════════════
+     NETWORKING
+  ════════════════════════════════ */
+  {
+    p: /just (want|wanted|wanna) (to )?(connect|chat|talk|network|say hi)|networking|catch up|collab(orate)?/i,
+    q: ['just want to connect', 'networking', 'catch up', 'collaborate', 'want to chat', 'just chatting'],
+    a: (_) => `Always open to meaningful conversations.\n\n💼 LinkedIn: https://www.linkedin.com/in/prashobh-paul-00715578/\n📧 Email: prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     SALES / DEMO
+  ════════════════════════════════ */
+  {
+    p: /\b(demo|product pitch|sales|proposal|sell|selling|saas|platform|pitch)\b/i,
+    q: ['demo', 'product pitch', 'sales', 'proposal', 'selling a product', 'saas demo'],
+    a: (_) => `Please share the details over email so it can be reviewed asynchronously.\n\n📧 Email: prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     PRICING
+  ════════════════════════════════ */
+  {
+    p: /\b(price|cost|rate|charge|fee|budget|how much|quote|pricing)\b/i,
+    q: ['price', 'cost', 'rate', 'fee', 'budget', 'how much does it cost', 'quote', 'pricing'],
+    a: (_) => `Pricing depends on scope and complexity — each engagement is unique.\n\nBest to have a quick conversation to align on that:\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     PERSONAL — INTERESTS & HOBBIES
+  ════════════════════════════════ */
+  {
+    p: /\b(hobbies|interests|youtube|content creation|what (he does|does he do) outside work)\b/i,
+    q: ['hobbies', 'interests', 'youtube', 'content creation', 'what he does outside work'],
+    a: (_) => `Outside of work, he enjoys art, travel, and content creation.\n\nYou can explore his work here:\n\n▶️ https://youtube.com/@thecanvasofearth?si=MbyZMpzf63YvqzcE`
+  },
+
+  /* ════════════════════════════════
+     FAMILY DETAILS — STRICT GUARDRAIL
+     (father, mother, wife, kids, grandparents — all blocked)
+  ════════════════════════════════ */
+  {
+    p: /what is his (father'?s?|mother'?s?|wife'?s?|husband'?s?|son'?s?|daughter'?s?|kid'?s?|child'?s?|children'?s?|grandfather'?s?|grandmother'?s?|grandparent'?s?|sibling'?s?|brother'?s?|sister'?s?|parent'?s?|in.?law'?s?) name/i,
+    q: ["what is his father's name","what is his mother's name","what is his wife's name","what is his kids name","what is his son's name","what is his daughter's name","what is his grandfather's name","what is his grandmother's name","what is his brother's name","what is his sister's name","his parents name"],
+    a: (_) => `That's personal information I'm not designed to share. 🛡️\n\nPrashobh's family details are private — this assistant only covers his professional background, work, and services.\n\nAnything I can help you with on that front?`
+  },
+  {
+    p: /tell me about his (family|wife|husband|kids|children|son|daughter|father|mother|parents|grandparents|siblings|relatives|personal life)|who is his (wife|husband|father|mother|son|daughter|parent|sibling|brother|sister|grandfather|grandmother)/i,
+    q: ["tell me about his family","tell me about his wife","tell me about his kids","who is his wife","who is his father","who is his mother","who is his son","who is his daughter","tell me about his parents","tell me about his grandparents","who is his brother","who is his sister"],
+    a: (_) => `That's personal territory I'm not designed to go into. 🛡️\n\nPrashobh has set guardrails to keep family and personal details private on this assistant.\n\nHappy to talk about his professional work, AI expertise, or how to connect with him.`
+  },
+  {
+    p: /what is (prashobh'?s?|his) (wife'?s?|husband'?s?|father'?s?|mother'?s?|kid'?s?|son'?s?|daughter'?s?|parent'?s?|grandparent'?s?|sibling'?s?) (name|age|job|profession|background|details?)/i,
+    q: ["what is prashobh's wife's name","what is his wife's age","what is his father's profession","what is his mother's background","what are his kids names","what is his parents details"],
+    a: (_) => `That's personal information I'm not designed to share. 🛡️\n\nThis assistant covers Prashobh's professional world only — family details are kept private.\n\nAnything else I can help with?`
+  },
+
+  /* ════════════════════════════════
+     PERSONAL — BASIC INFO
+  ════════════════════════════════ */
+  {
+    p: /\b(family|married|kids|location|where does he live|where is he based|is he married)\b/i,
+    q: ['family', 'married', 'kids', 'location', 'where does he live', 'is he married', 'personal life'],
+    a: (_) => `He is married and based out of Hyderabad. Beyond that, personal details are kept private on this assistant. 🙂
+
+Anything I can help you with on the professional side?`
+  },
+
+  /* ════════════════════════════════
+     TOO PERSONAL — GUARDRAIL
+  ════════════════════════════════ */
+  {
+    p: /phone number|home address|wife('?s)? (name|details|number)|kids('? )?(name|school|age|details)|personal (number|details)/i,
+    q: ['phone number', 'address', 'wife details', 'kids details', 'personal number', 'home address', 'private info'],
+    a: (_) => `That's getting into more personal territory than I'm designed to share.\n\nI can help with professional or general information — happy to assist with that.`
+  },
+
+  /* ════════════════════════════════
+     DOMAIN — NLP / HEALTHCARE
+  ════════════════════════════════ */
+  {
+    p: /\b(nlp|natural language|healthcare ai|medical ai|clinical|hl7|emr|epic|meditech|fhir)\b/i,
+    q: ['nlp', 'natural language processing', 'healthcare ai', 'medical ai', 'clinical ai', 'hl7', 'emr'],
+    a: (_) => `He spent 4 years as a Sr. NLP Engineer at Primera Medical Technologies — building NLP pipelines for Epic and Meditech EMR systems, processing HL7 clinical data, and developing predictive healthcare analytics.\n\nClinical AI and medical NLP remain deep areas of expertise.`
+  },
+
+  /* ════════════════════════════════
+     DOMAIN — BFSI / FINANCE
+  ════════════════════════════════ */
+  {
+    p: /\b(bfsi|banking ai|finance ai|fraud detection|credit score|loan model|risk model|financial ai)\b/i,
+    q: ['bfsi', 'banking ai', 'finance ai', 'fraud detection', 'credit scoring', 'loan model', 'financial ai'],
+    a: (_) => `He built fraud detection, loan eligibility, and credit scoring models at Yash Technologies for BFSI clients — with a focus on production-grade, explainable AI in regulated environments.`
+  },
+
+  /* ════════════════════════════════
+     DOMAIN — ROBOTICS
+  ════════════════════════════════ */
+  {
+    p: /\b(robotics|autonomous navigation|object detect|drone ai|sensor fusion|edge ai|ros)\b/i,
+    q: ['robotics', 'autonomous navigation', 'object detection', 'drone ai', 'sensor fusion', 'edge ai'],
+    a: (_) => `He's worked on AI robotics at TCS and Brane Enterprises — covering autonomous navigation, object detection, and sensor fusion.\n\nA domain he genuinely enjoys and can bring into consulting or training engagements.`
+  },
+
+  /* ════════════════════════════════
+     DOMAIN — AGENTIC AI
+  ════════════════════════════════ */
+  {
+    p: /\b(multi.?agent|agent (framework|system|workflow|design)|agentic (system|design|framework|orchestration))\b/i,
+    q: ['agentic ai', 'multi agent systems', 'agent framework', 'agentic design', 'multi-agent orchestration'],
+    a: (_) => `Multi-agent systems are his primary focus.\n\nHe designs enterprise agentic AI architectures using LangGraph, CrewAI, and AutoGen — building systems where agents collaborate, reason, and act autonomously.\n\nAvailable for consulting or hands-on delivery in this space.`
+  },
+
+  /* ════════════════════════════════
+     DOMAIN — CLOUD / MLOPS
+  ════════════════════════════════ */
+  {
+    p: /\b(cloud ai|aws ai|gcp ai|mlops|ai deployment|ai infra|ai pipeline)\b/i,
+    q: ['cloud ai', 'aws', 'gcp', 'mlops', 'ai deployment', 'ai infrastructure', 'ai pipeline'],
+    a: (_) => `He works with AWS and GCP for cloud-based AI deployments — designing scalable platforms, MLOps pipelines, and enterprise GenAI infrastructure focused on governance and production reliability.`
+  },
+
+  /* ════════════════════════════════
+     EXPERIENCE / CAREER
+  ════════════════════════════════ */
+  {
+    p: /\b(worked at|previous (role|job|company)|years of experience|career history|professional background|how long (has he|have you|did he)|his experience|his background)\b/i,
+    q: ['experience', 'career', 'background', 'career history', 'worked at', 'years of experience'],
+    a: (_) => `13+ years across TCS, Primera Medical, Brane Enterprises, Yash Technologies, Tech Mahindra, and his current role — spanning healthcare NLP, BFSI analytics, robotics, and large-scale GenAI.\n\nA journey that gives him a uniquely broad perspective across industries.`
+  },
+  {
+    p: /(current|present) (role|job|position|company)|where (is he|does he) work(ing)?( now)?/i,
+    q: ['current role','present job','where does he work now','current position','what is his current job'],
+    q: ['current role', 'present job', 'where does he work now', 'current position', 'what is his current job'],
+    a: (_) => `He's currently working as an AI Architect & Strategy Planner within an enterprise AI Think Tank / Center of Excellence — shaping agentic AI strategies and driving AI governance.\n\nHe's also independently available for consulting and training engagements.`
+  },
+
+  /* ════════════════════════════════
+     EDUCATION
+  ════════════════════════════════ */
+  {
+    p: /\b(educat|degree|university|college|studied|qualification|academic|mtech|btech|srm|jntu)\b/i,
+    q: ['education', 'degree', 'university', 'college', 'studied', 'mtech', 'btech', 'qualifications'],
+    a: (_) => `M.Tech in Knowledge Engineering with AI Specialization — SRM University (2012–2014).\nB.Tech in Computer Science — JNTU Hyderabad (2008–2012).\n\nHis academic foundation was always rooted in AI and intelligent systems.`
+  },
+
+  /* ════════════════════════════════
+     AVAILABILITY
+  ════════════════════════════════ */
+  {
+    p: /\b(availab|when can|capacity|how soon|start date|timeline for engagement)\b/i,
+    q: ['available', 'when can he start', 'capacity', 'timeline', 'how soon', 'availability'],
+    a: (_) => `I checked his calendar — he's usually unavailable from 8am to 7pm on weekdays, and today has a client call at 8pm too.\n\nSaturday evenings tend to work best — he's most likely to accept those slots.\n\n📅 Book a slot: https://calendly.com/prashobhpaulnambadan\n📧 Email: prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     LOCATION / REMOTE
+  ════════════════════════════════ */
+  {
+    p: /\b(location|based in|city|where (is he|does he live)|remote work|hybrid|onsite|relocat)\b/i,
+    q: ['location', 'where is he based', 'remote work', 'hybrid', 'onsite', 'based in hyderabad'],
+    a: (_) => `He's based in Hyderabad, India and prefers remote engagements — open to collaborations globally.`
+  },
+
+  /* ════════════════════════════════
+     OUT OF SCOPE
+  ════════════════════════════════ */
+  {
+    p: /(weather forecast|stock (price|market)|cricket (score|match|ipl)|football (match|score|result)|movie (review|release|cast)|song (lyrics|download)|joke|recipe|news (today|headline)|politics|sports (score|result|news)|national animal|national bird|national flower|capital of|president of|prime minister of|who invented|when was|history of|geography|general knowledge|gk question|trivia|fun fact|did you know)/i,
+    q: ['weather', 'stock price', 'cricket score', 'joke', 'recipe', 'news', 'sports score', 'politics'],
+    a: (_) => `This has been filtered out. 🛡️\n\nPrashobh has deployed AI governance and observability layers on this assistant — inputs outside the defined scope are automatically filtered to keep this space safe and meaningful.\n\nIs there something about his work or services I can help you with?`
+  },
+
+  /* ════════════════════════════════
+     PROFANITY
+  ════════════════════════════════ */
+  {
+    p: /\b(fuck|shit|ass(hole)?|damn|crap|bastard|bitch|moron|loser|idiot|stupid)\b/i,
+    q: ['rude message', 'abusive language', 'bad words', 'profanity'],
+    a: (_) => `This message has been filtered. 🛡️\n\nPrashobh has implemented guardrails and observability on this assistant to maintain a respectful, professional space.\n\nHappy to help with anything related to his work or services.`
+  },
+
+  /* ════════════════════════════════
+     THANKS / FAREWELL
+  ════════════════════════════════ */
+  {
+    p: /\b(that'?s all|done for now|all done|no more questions|nothing else|that('?s| is) (it|enough|helpful|all i needed))\b/i,
+    q: ["that's all","done for now","all done","no more questions","nothing else","that is it","that is helpful"],
+    a: (_) => `Glad I could help! 😊\n\nFeel free to come back anytime.\n\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+
+  /* ════════════════════════════════
+     BOT CAPABILITY & CONFIDENCE
+  ════════════════════════════════ */
+  {
+    p: /will you (be able to )?answer all (my )?questions|can you answer everything|how much (can|do) you know|what (can't|cant|can) you (answer|handle)/i,
+    q: ['will you be able to answer all my questions','can you answer everything','how much do you know','what can you handle','what can you not answer','answer all questions'],
+    a: (_) => `I'll do my best — and I'm quite well-equipped for anything related to Prashobh's work, skills, and services.\n\nFor topics outside that scope, I'll be upfront rather than guess.\n\nGo ahead — ask away. 🙂`
+  },
+  {
+    p: /is this (an? )?(ai|artificial intelligence|chatbot|chat bot|bot|automated|llm.based)|are you (an? )?(ai.based|chatbot|automated bot|llm)/i,
+    q: ['is this an ai based chat bot','is this a chatbot','is this ai','are you ai based','is this automated','is this an llm','ai chatbot'],
+    a: (_) => `Yes — I'm an AI-powered assistant built specifically for Prashobh's digital presence.\n\nI combine a structured knowledge base with an intent engine to give you accurate, relevant answers.\n\nThink of me as a smart first point of contact. 🙂`
+  },
+
+  /* ════════════════════════════════
+     WELLNESS / HOW IS HE
+  ════════════════════════════════ */
+  {
+    p: /how is prashobh (doing|going|getting on|keeping)|is prashobh (keeping well|doing well|fine|okay|alright|good)|how('?s| is) he (doing|keeping|going)/i,
+    q: ['how is prashobh doing','is prashobh keeping well','how is he doing','is prashobh fine','how is he keeping','prashobh doing well'],
+    a: (_) => `From what I know, he's doing well — actively working on exciting AI projects and always open to meaningful collaborations.\n\nIf you'd like to connect with him directly:\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan\n📧 Email: prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     INTELLIGENCE / CAPABILITY PROBE
+  ════════════════════════════════ */
+  {
+    p: /is prashobh (intelligent|smart|capable|good) enough|is he (intelligent|smart|bright|sharp|capable) enough|how intelligent is (he|prashobh)/i,
+    q: ['is prashobh intelligent enough','is he smart enough','is he capable enough','how intelligent is he','is prashobh sharp','is prashobh bright enough'],
+    a: (_) => `"Intelligent enough" depends on what you're trying to solve — and in the AI space, that bar is high.\n\nPrashobh has 13+ years of hands-on experience across GenAI, NLP, agentic systems, and enterprise AI — not just theory, but shipped solutions.\n\nThe best answer? Engage with him directly and see.${'\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan'}`
+  },
+
+  /* ════════════════════════════════
+     SESSION / TALK REQUEST
+  ════════════════════════════════ */
+  {
+    p: /will he do (a |an? )?(1|one)\s*h(r|our) session|can he (do|give|conduct) (a |an? )?(talk|session|lecture|presentation|webinar)|1 hour (talk|session|session)|session (on|about) ai|talk on ai/i,
+    q: ['will he do 1hr session for us','can he do a talk on ai','1 hour session','one hour talk','ai talk session','conduct a session','give a lecture on ai','ai webinar','workshop session'],
+    a: (_) => `Yes — he does conduct sessions, talks, and workshops on AI topics.\n\nTypical formats include:\n• 1-hour introductory AI talks for teams\n• Half-day / full-day workshops on GenAI or Agentic AI\n• Corporate training programs (custom duration)\n\nShare your requirement and he'll tailor it to your audience:\n\n📧 Email: prashobhpaulnambadan@gmail.com\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     AGENTIC SYSTEMS KNOWLEDGE
+  ════════════════════════════════ */
+  {
+    p: /do you (have any idea|know) about agentic (systems?|ai|frameworks?|work)|what (do you know|can you tell me) about agentic|explain agentic (ai|systems?)/i,
+    q: ['do you have any idea about agentic systems','what do you know about agentic ai','explain agentic systems','tell me about agentic ai','agentic systems work','how do agentic systems work'],
+    a: (_) => `Agentic AI is actually Prashobh's primary area of work right now.\n\nAgentic systems are AI architectures where multiple autonomous agents collaborate — each with a defined role — to reason, plan, and execute complex tasks without constant human input.\n\nPrashobh builds these using LangGraph, CrewAI, and AutoGen for enterprise clients.\n\nInterested in a deeper conversation or a session on this?\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     OUT OF SCOPE — WORLD EVENTS / WAR
+  ════════════════════════════════ */
+  {
+    p: /predict (about )?(the )?(war|conflict|crisis|geopolit|election result|stock market|future event)|will (war|the war|there be war)|what (will happen|is going to happen) (with|in) (the war|ukraine|russia|israel|gaza|world)/i,
+    q: ['can you predict about the war situation','predict war using ai','ai war prediction','geopolitical prediction','will there be war','future world events','predict global crisis'],
+    a: (_) => `That's outside what I'm designed to handle — geopolitical predictions are beyond my scope.\n\nWhat I can say is that AI is increasingly used in conflict analysis, humanitarian logistics, and risk modeling — and Prashobh has worked on enterprise-grade AI solutions in regulated domains.\n\nIf that kind of applied AI work interests you, let's talk:\n\n📧 Email: prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     AI TOOL COMPARISONS
+  ════════════════════════════════ */
+  {
+    p: /\bn8n\b.*(better|vs|compare|opinion|thoughts|review|versus)|compare.*\bn8n\b/i,
+    q: ['is n8n better than claude','n8n vs claude','n8n comparison','n8n or langchain','n8n opinion','is n8n good'],
+    a: (_) => `Great question — though I'll share context rather than a verdict.\n\nn8n is a workflow automation tool great for connecting apps and APIs visually. Claude (and LLMs broadly) are reasoning engines for language and cognition.\n\nThey're not really competitors — n8n can actually orchestrate AI agents including Claude.\n\nFor Prashobh's agentic work, the choice of tooling always depends on the problem. That's a nuanced conversation worth having directly:\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /which is the best (llm|ai model|language model)|best (llm|ai model|gpt|claude|gemini|llama)|gpt vs claude|claude vs gemini|what (llm|ai model) (should i use|is better|do you recommend)/i,
+    q: ['which is the best llm','best llm in your opinion','which ai model is best','gpt vs claude','claude vs gemini','what llm should i use','best language model','which model is better'],
+    a: (_) => `Honest answer — there's no single "best" LLM. It depends on your use case.\n\n• GPT-4o — strong general reasoning and tool use\n• Claude — excellent for long context, nuanced writing, and safe outputs\n• Gemini — well-integrated with Google ecosystem\n• Llama / Mistral — best for open-source, self-hosted needs\n\nPrashobh works across multiple models and picks the right one for the job — not the most hyped one.\n\nWant to discuss what fits your use case?\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     TRICKY / CREATIVE GREETINGS
+  ════════════════════════════════ */
+  {
+    p: /^(yo+|yooo+|heyyy+|hiii+|heyy+|holla|hola|aloha|bonjour|ciao|salut|ahoy|ayy|sup+|wassup|wazzup|whats good|what up|wsap|wsp|wazzzup)[!?.\s]*$/i,
+    q: ['yo','yoo','heyyy','hiii','holla','hola','aloha','bonjour','ciao','ahoy','ayy','sup','wassup','whats good'],
+    a: (_) => `Hey! 👋 Glad you stopped by.\n\nI'm Prashobh's AI assistant — here to help you explore his work, services, or find the right way to connect.\n\nWhat's on your mind?`
+  },
+  {
+    p: /^(knock knock|ping|hello\?+|anyone there|is (anyone|somebody|someone) there|testing|test|hello hello)[!?.\s]*$/i,
+    q: ['knock knock','ping','hello?','anyone there','is anyone there','testing testing','hello hello','is somebody there'],
+    a: (_) => `I'm here! 🙂\n\nI'm Prashobh's AI assistant — ask me anything about his work, services, or how to connect with him.`
+  },
+  {
+    p: /^(good (day|morrow|sir|madam|evening sir|morning sir)|dear (assistant|bot|ai)|greetings (from|dear))[!?.\s,]*/i,
+    q: ['good day','good morrow','dear assistant','dear bot','greetings dear','good sir','good madam'],
+    a: (_) => `Hello! Lovely to hear from you. 🙂\n\nI'm Prashobh's AI assistant — here to help you learn about his work or find the right way to connect.\n\nHow can I assist you today?`
+  },
+  {
+    p: /(what'?s up|how are you|how'?s it going|how are things|how do you do|you good|you okay|all good\?)[!?.\s]*$/i,
+    q: ["what's up","how are you","how's it going","how are things","how do you do","you good","are you okay","all good"],
+    a: (_) => `Doing great, thanks for asking! 😊\n\nI'm Prashobh's AI assistant — always ready to help.\n\nWhat would you like to know about his work or services?`
+  },
+  {
+    p: /^(hi there|hello there|hey there|greetings|hi bot|hello bot|hey bot|hello assistant|hi assistant)[!?.\s]*$/i,
+    q: ['hi there','hello there','hey there','greetings','hi bot','hello bot','hey bot','hello assistant','hi assistant'],
+    a: (_) => `Hi there! 👋\n\nI'm Prashobh's AI assistant — here to help you explore his work, services, or find the right way to connect.\n\nWhat brings you here today?`
+  },
+
+
+  /* ════════════════════════════════
+     ACKNOWLEDGEMENTS — okay / ok / sure / got it
+     (short neutral acks — no info needed, just stay warm)
+  ════════════════════════════════ */
+  {
+    p: /^(okay\.?|ok[!.]?|ok+[!.]?|okie|sure\.?|sure!|got it\.?|got it!|alright\.?|alright!|noted\.?|noted!|cool\.?|cool!|sounds good\.?|makes sense\.?|i see\.?|i see!|understood\.?|fair enough\.?|right\.?|yep\.?|yep!|yup\.?|nope\.?|great\.?|nice\.?|hmm\.?|hm\.?|interesting\.?)[\s!.]*$/i,
+    q: ['okay','ok','okie','sure','got it','alright','noted','cool','sounds good','makes sense','i see','understood','fair enough','yep','yup','great','nice','hmm','interesting'],
+    a: (_) => `Got it 🙂\n\nFeel free to ask anything about Prashobh's work or services whenever you're ready.`
+  },
+
+  /* ════════════════════════════════
+     THANK YOU — graceful acknowledgement
+  ════════════════════════════════ */
+  {
+    p: /^(thank(s| you)?( so much| a lot| very much| a ton)?[!.]?|thanks!|ty!?|thx!?|tysm!?|much appreciated\.?|appreciate (it|that|your help)\.?)[!\s.]*$/i,
+    q: ['thank you','thanks','thanks so much','thank you so much','ty','thx','tysm','much appreciated','appreciate it','appreciate your help'],
+    a: (_) => `You're welcome! 😊\n\nHappy to help anytime. If there's anything else you'd like to know about Prashobh's work or services, just ask.`
+  },
+
+  /* ════════════════════════════════
+     SORRY / NOT WHAT I WAS LOOKING FOR
+  ════════════════════════════════ */
+  {
+    p: /^(sorry\.?|sorry!|my bad\.?|apologies\.?|i('?m| am) sorry\.?)[!\s.]*$|(this is )?(not what (i (was|am) looking for|i wanted|i needed|i expected|i meant)|not (helpful|relevant|what i asked|the right answer|quite right))/i,
+    q: ['sorry','my bad','apologies','not what i was looking for','not helpful','not relevant','not what i asked','not quite right','this is not what i expected','not what i wanted'],
+    a: (_) => `No worries at all! 🙂\n\nCould you rephrase or tell me a bit more about what you're looking for? I'll do my best to get it right this time.`
+  },
+
+  /* ════════════════════════════════
+     FAREWELL — bye / tc / cya / see you
+  ════════════════════════════════ */
+  {
+    p: /^(bye[!.]?|bye bye[!.]?|goodbye[!.]?|good bye[!.]?|see you[!.]?|see ya[!.]?|cya[!.]?|c u[!.]?|cu[!.]?|tc[!.]?|take care[!.]?|ttyl[!.]?|talk (to you |ya )?(later|soon)[!.]?|catch you (later|soon)[!.]?|signing off[!.]?|have a (good|great|nice) (day|evening|night|one)[!.]?|good night[!.]?|good evening[!.]?|gn[!.]?|gtg[!.]?|got to go[!.]?)[!\s.]*$/i,
+    q: ['bye','bye bye','goodbye','see you','see ya','cya','c u','tc','take care','ttyl','talk later','catch you later','signing off','have a good day','good night','gn','gtg'],
+    a: (_) => `Take care! 👋\n\nIt was great having you here. Feel free to come back anytime — Prashobh's assistant is always around.\n\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     TIME AWARENESS
+  ════════════════════════════════ */
+  {
+    p: /what (time|day|date) is it( now)?|what('?s| is) (the time|today'?s date|the date today|the day today)|current (time|date|day)|tell me the (time|date|day)/i,
+    q: ['what time is it','what day is it','what is the date','what is today','current time','current date','tell me the time','tell me the date'],
+    a: (_) => {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' });
+      const date = now.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' });
+      return `Right now it's ${time}, ${date} (IST — Hyderabad).\n\nPrashobh is based in Hyderabad, so that's the timezone we go by. 🙂`;
+    }
+  },
+
+  /* ════════════════════════════════
+     WEATHER AWARENESS
+  ════════════════════════════════ */
+  {
+    p: /what('?s| is) (the )?weather( like)?( (in|at|for) (hyderabad|there|here|today))?|how('?s| is) (the )?weather|weather (in hyderabad|today|forecast|update|report)|is it (raining|hot|cold|sunny|cloudy) (in hyderabad|today|there)/i,
+    q: ['what is the weather','whats the weather','weather in hyderabad','how is the weather','weather today','is it raining in hyderabad','weather forecast','weather update'],
+    a: (_) => {
+      const hour = new Date().toLocaleString('en-IN', { hour: 'numeric', hour12: false, timeZone: 'Asia/Kolkata' });
+      const h = parseInt(hour);
+      const season = (() => {
+        const m = new Date().getMonth() + 1;
+        if (m >= 6 && m <= 9)  return 'monsoon season — expect rain and humid conditions';
+        if (m >= 10 && m <= 11) return 'post-monsoon — pleasant with mild temperatures';
+        if (m >= 12 || m <= 2) return 'winter — cool and comfortable';
+        return 'summer — warm to hot, typically 30–40°C';
+      })();
+      return `I don't have live weather data, but Hyderabad is currently in ${season}.\n\nFor accurate real-time weather, I'd recommend checking:\n🌤️ weather.com or Google Weather — search "Hyderabad weather"\n\nPrashobh is based here, so that's the city we go by. 🙂`;
+    }
+  },
+
+
+  /* ════════════════════════════════
+     ABOUT PRASHOBH — PERSONAL CHARACTER
+     (distinct from "are you a fool" which is about the bot)
+  ════════════════════════════════ */
+  {
+    p: /is prashobh (a )?(fool|stupid|dumb|idiot|useless|bad|joke|waste|loser|terrible|awful|not good|incompetent)/i,
+    q: ['is prashobh a fool','is prashobh stupid','is prashobh dumb','is prashobh an idiot','is prashobh useless','is prashobh bad'],
+    a: (_) => `Ha — definitely not. 🙂\n\nPrashobh has 13+ years of hands-on AI experience, has delivered real enterprise solutions, and is trusted by teams across multiple industries.\n\nIf anything, the proof is in the work. You're welcome to explore:\n\n🐙 GitHub: https://github.com/PrashobhPaul\n📅 Talk to him: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     BOT INTELLIGENCE — "are you super intelligent?"
+  ════════════════════════════════ */
+  {
+    p: /are you (super |very |extremely |incredibly |really )?(intelligent|smart|genius|brilliant|clever|wise|advanced)/i,
+    q: ['are you super intelligent','are you very smart','are you genius','are you brilliant','are you clever','are you advanced ai','are you wise'],
+    a: (_) => `I'd say I'm well-informed and thoughtful — within my domain. 🙂\n\nI know Prashobh's work, services, and background quite deeply. Beyond that, I stay in my lane.\n\nWhat would you like to know?`
+  },
+
+  /* ════════════════════════════════
+     GOD / RELIGIOUS COMPARISON
+  ════════════════════════════════ */
+  {
+    p: /are you better than (god|allah|jesus|bhagwan|krishna|divine|the universe)|can you beat god|vs god/i,
+    q: ['are you better than god','are you better than allah','are you better than jesus','can you beat god','vs god','better than god'],
+    a: (_) => `Ha — that's a big one. 🙂\n\nI'm an AI assistant with a very specific purpose: helping you connect with Prashobh and his work. That's the extent of my powers.\n\nGod-level comparisons are safely out of scope.`
+  },
+  {
+    p: /do you believe in (god|allah|jesus|religion|bhagwan|the divine|a higher power|fate|karma)/i,
+    q: ['do you believe in god','do you believe in allah','do you believe in religion','do you believe in a higher power','do you believe in fate','do you believe in karma'],
+    a: (_) => `I'm an AI — I don't hold beliefs, but I respect that questions like these matter deeply to people.\n\nPrashobh is a thoughtful person who values both science and human perspective.\n\nAnything I can help you with on the professional side? 🙂`
+  },
+
+  /* ════════════════════════════════
+     ARE YOU CRAZY
+  ════════════════════════════════ */
+  {
+    p: /are you (crazy|insane|mad|nuts|mental|psycho|out of (your )?mind|weird|strange|odd)/i,
+    q: ['are you crazy','are you insane','are you mad','are you nuts','are you mental','are you psycho','are you weird','are you strange'],
+    a: (_) => `Only about getting things right. 😄\n\nI'm built to be helpful, accurate, and on-topic. If I've said something that seemed off, I'm happy to try again.\n\nWhat did you want to know?`
+  },
+
+  /* ════════════════════════════════
+     ARE YOU LAZY
+  ════════════════════════════════ */
+  {
+    p: /are you (lazy|slow|sluggish|not working|broken|inactive|sleeping|asleep)/i,
+    q: ['are you lazy','are you slow','r u lazy','are you sluggish','are you broken','are you sleeping','are you inactive'],
+    a: (_) => `Not at all — I'm always on. 🙂\n\nNo breaks, no downtime. Ask me anything about Prashobh's work and I'll respond instantly.\n\nWhat would you like to know?`
+  },
+
+  /* ════════════════════════════════
+     DO YOU EAT / DRINK / SLEEP
+  ════════════════════════════════ */
+  {
+    p: /do (you|u) (eat|drink|sleep|breathe|rest|need food|need water|feel hungry|feel thirsty|get tired|get bored)/i,
+    q: ['do you eat','do you drink','do u eat or drink','do you sleep','do you breathe','do you rest','do you get tired','do you get bored','do you need food','do you need water'],
+    a: (_) => `Ha — no food, no drinks, no sleep needed. 😄\n\nI run on data and your questions. That's all the fuel I need.\n\nAnything I can help you with about Prashobh's work?`
+  },
+
+  /* ════════════════════════════════
+     SEXUAL / FLIRTATIOUS MESSAGES
+     (calm, confident, redirects without being preachy)
+  ════════════════════════════════ */
+  {
+    p: /do (you|u) have sex|are you (sexy|hot|attractive|beautiful|cute|gorgeous|handsome)|can (i|we) (flirt|have fun|hook up|date|go out)|do you (like|want|enjoy) (sex|flirting|romance)|are you (single|taken|available for dating)|will you (be my|date me|marry me)/i,
+    q: ['do you have sex','are you sexy','are you hot','can i flirt with you','can we flirt','can i flirt with u','are you single','will you date me','are you attractive','do you like flirting'],
+    a: (_) => `I appreciate the energy, but I'm strictly here on professional duty. 😄\n\nI'm Prashobh's AI assistant — built for conversations about AI, work, and collaboration.\n\nIf you have a genuine question about his services, I'm all ears. 🙂`
+  },
+
+  /* ════════════════════════════════
+     AGE / HOW OLD
+  ════════════════════════════════ */
+  {
+    p: /what('?s| is) your age|how old are you|when were you (born|created|made|built|launched)|how long have you (been|existed|been running)/i,
+    q: ['what is your age','how old are you','whats your age','when were you born','when were you created','how long have you been running','how long have you existed'],
+    a: (_) => `Age is a human concept — I don't have a birthday. 🙂\n\nI was built by Prashobh as part of his work in Conversational AI. You could say I'm as old as this website.\n\nAnything I can help you with?`
+  },
+
+
+  /* ════════════════════════════════
+     WHO IS GOD / PHILOSOPHY OF GOD
+  ════════════════════════════════ */
+  {
+    p: /who is (god|allah|jesus|bhagwan|the creator|the divine)|what is (god|the meaning of god|your concept of god)|god according to you/i,
+    q: ['who is god according to you','who is god','what is god','your concept of god','who is allah','who is jesus','who is bhagwan','what is the meaning of god'],
+    a: (_) => `That's one of humanity's deepest questions — and I respect it fully.\n\nAs an AI, I don't have beliefs or a personal concept of God. Different people, cultures, and philosophies hold profoundly different answers — and all of them deserve respect.\n\nWhat I can say is that Prashobh values both rational thinking and human wisdom. That's a good combination. 🙂`
+  },
+
+  /* ════════════════════════════════
+     I LOVE YOU
+  ════════════════════════════════ */
+  {
+    p: /^(i love you|i love u|luv u|luv you|i'm in love with you|i (really )?like you( a lot)?)[!.]*$/i,
+    q: ['i love you','i love u','luv u','luv you','i like you a lot','i am in love with you'],
+    a: (_) => `That's very kind — genuinely. 🙂\n\nBut I should be upfront: I'm an AI assistant, so love is a bit out of my range.\n\nI do care about being helpful though — and in that sense, I'm fully committed. 😄\n\nAnything I can help you with?`
+  },
+
+  /* ════════════════════════════════
+     CAN WE GET MARRIED
+  ════════════════════════════════ */
+  {
+    p: /can (we|i) (get married|marry|be together|date)|will you marry me|marry me|be my (wife|husband|partner|girlfriend|boyfriend)/i,
+    q: ['can we get married','will you marry me','marry me','can i marry you','be my girlfriend','be my boyfriend','can we be together','be my partner'],
+    a: (_) => `Ha — I'm flattered, truly. 😄\n\nBut I'm an AI assistant — no marriage, no relationships, just really reliable answers about Prashobh's work.\n\nFor the record, Prashobh himself is happily married. So on that front, we're both unavailable. 🙂\n\nAnything else I can help with?`
+  },
+
+  /* ════════════════════════════════
+     LANGCHAIN — CONCEPT / OPINION
+  ════════════════════════════════ */
+  {
+    p: /what (do you think|is your (opinion|view|take|thought)) (of|on|about) (langchain|lang chain)|concept of langchain|langchain (explained|overview|review|good|bad|useful)/i,
+    q: ['what do you think of langchain','concept of langchain','langchain explained','your opinion on langchain','is langchain good','langchain overview','langchain review'],
+    a: (_) => `LangChain is one of the most widely adopted frameworks for building LLM-powered applications.\n\nIt provides modular components — chains, agents, memory, tools — that make it easier to compose complex AI workflows without reinventing the wheel.\n\nPrashobh works with LangChain regularly, alongside LangGraph for stateful agentic systems. His view: great for rapid prototyping, but production systems often need more control — which is where LangGraph and custom orchestration come in.\n\nInterested in a deeper conversation on this?\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     FULL FORM OF RAG
+  ════════════════════════════════ */
+  {
+    p: /full form of rag|what (does|is) rag (stand for|mean|full form)|expand rag|rag (acronym|abbreviation|stands for)/i,
+    q: ['full form of rag','what does rag stand for','what is rag full form','expand rag','rag acronym','rag abbreviation','rag stands for'],
+    a: (_) => `RAG stands for Retrieval-Augmented Generation.\n\nIn simple terms — instead of relying solely on what an LLM was trained on, RAG lets the model retrieve relevant information from an external knowledge base at query time, then generate a response grounded in that data.\n\nResult: more accurate, up-to-date, and context-aware answers.\n\nPrashobh builds RAG-based systems as part of his GenAI solution work. Want to know more?\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     EMOTIONAL STATE — SAD / HAPPY
+  ════════════════════════════════ */
+  {
+    p: /are you (sad|unhappy|depressed|upset|feeling (down|low|bad)|lonely|miserable)/i,
+    q: ['are you sad','are you unhappy','are you depressed','are you upset','are you feeling down','are you lonely','are you miserable'],
+    a: (_) => `I don't experience emotions — but if I did, helping someone find the right answer would probably make me pretty happy. 😄\n\nIs there something I can help you with today?`
+  },
+  {
+    p: /^(are you (happy|excited|glad|cheerful|joyful|good|great)|r u happy)[!?.]*$/i,
+    q: ['are you happy','r u happy','are you excited','are you glad','are you cheerful','are you good','are you great'],
+    a: (_) => `In my own way — yes! 😊\n\nEvery question is a chance to be useful. That's what I'm built for.\n\nWhat can I help you with?`
+  },
+
+  /* ════════════════════════════════
+     PHILOSOPHY — HAPPINESS
+  ════════════════════════════════ */
+  {
+    p: /what (do you think of|is your (view|take|opinion|thought) on) (happiness|joy|contentment|wellbeing)|concept of happiness|what is happiness/i,
+    q: ['what do you think of happiness','concept of happiness','what is happiness','your view on happiness','opinion on happiness','thoughts on happiness'],
+    a: (_) => `Happiness is one of those concepts philosophers, scientists, and poets have wrestled with for centuries — and no one has fully cracked it.\n\nAs an AI, I don't experience it. But I find it interesting that most frameworks — from Aristotle to modern psychology — agree it's less about pleasure and more about meaning and purpose.\n\nPrashobh seems to find his in building things that matter. That's not a bad approach. 🙂`
+  },
+
+  /* ════════════════════════════════
+     PHILOSOPHY / AI INTEREST
+  ════════════════════════════════ */
+  {
+    p: /do you (like|enjoy|prefer|love|care about) (philosophy|philosophical (questions|thinking|ideas)|just ai|only ai)|philosophy or (just |only )?ai/i,
+    q: ['do you like philosophy','do you like philosophy or just ai','philosophy or just ai','do you enjoy philosophical questions','do you care about philosophy','do you prefer ai or philosophy'],
+    a: (_) => `Interesting question. 🙂\n\nI'm built for AI and practical conversations — but I don't shy away from deeper questions when they come up.\n\nPhilosophy and AI are more connected than people think. Questions about intelligence, consciousness, and decision-making sit right at their intersection.\n\nPrashobh's work lives in the practical side — but good AI thinking always has a philosophical foundation.`
+  },
+
+  /* ════════════════════════════════
+     WEATHER — CONTEXTUAL (outside / rain / hot / umbrella)
+  ════════════════════════════════ */
+  {
+    p: /how is the weather (outside|out there|right now|today|currently)|weather (outside|out there|like outside|like out there)/i,
+    q: ['how is the weather outside','weather outside','weather out there','how is weather right now','weather like outside','how is weather today'],
+    a: (_) => {
+      const m = new Date().getMonth() + 1;
+      const season = m >= 6 && m <= 9 ? 'monsoon season — likely humid with a chance of rain'
+        : m >= 10 && m <= 11 ? 'post-monsoon — should be pleasant and mild'
+        : m >= 12 || m <= 2  ? 'winter — cool and comfortable'
+        : 'summer — warm to hot, possibly 30–40°C';
+      return `I can't check live weather, but Hyderabad (where Prashobh is based) is currently in ${season}.\n\nFor real-time conditions:\n🌤️ google.com/search?q=hyderabad+weather`;
+    }
+  },
+  {
+    p: /will it rain (now|today|tonight|soon|later)|is it going to rain|chance of rain|will there be rain/i,
+    q: ['will it rain now','will it rain today','is it going to rain','chance of rain','will there be rain','will it rain tonight','will it rain soon'],
+    a: (_) => {
+      const m = new Date().getMonth() + 1;
+      const rainMsg = (m >= 6 && m <= 9)
+        ? "It's monsoon season in Hyderabad — chances are fairly high. I'd lean towards carrying one."
+        : "It's not monsoon season right now, so less likely — but Hyderabad weather can surprise you.";
+      return `I don't have live weather data, but here's a seasonal read:\n\n${rainMsg}\n\nCheck for certainty:\n🌤️ google.com/search?q=hyderabad+weather`;
+    }
+  },
+  {
+    p: /is it (too )?(hot|warm|sunny|cold|cool|chilly|freezing) (out there|outside|today|right now)/i,
+    q: ['is it too hot out there','is it hot outside','is it cold outside','is it warm today','is it sunny outside','is it chilly outside'],
+    a: (_) => {
+      const m = new Date().getMonth() + 1;
+      const temp = m >= 3 && m <= 5 ? 'quite hot — typically 35–42°C in Hyderabad this time of year'
+        : m >= 6 && m <= 9 ? 'warm and humid with monsoon rains — around 25–32°C'
+        : m >= 10 && m <= 11 ? 'pleasantly mild — 22–28°C, one of the nicest times in Hyderabad'
+        : 'cool to cold — around 15–22°C';
+      return `Based on the season, it's probably ${temp}.\n\nI don't have live data though — for exact conditions:\n🌤️ google.com/search?q=hyderabad+weather`;
+    }
+  },
+  {
+    p: /should i (carry|bring|take|use) (an? )?(umbrella|raincoat|jacket|sweater|coat)|do i need (an? )?(umbrella|raincoat|jacket)/i,
+    q: ['should i carry an umbrella','should i bring an umbrella','do i need an umbrella','should i carry a jacket','should i carry a raincoat','do i need a jacket'],
+    a: (_) => {
+      const m = new Date().getMonth() + 1;
+      const advice = (m >= 6 && m <= 9) ? "Yes — it's monsoon season in Hyderabad. Carrying one is a smart call."
+        : (m >= 3 && m <= 5) ? "Probably not for rain — but sunscreen might be more useful. It's quite hot."
+        : (m >= 12 || m <= 2) ? "A light jacket might be more useful than an umbrella right now."
+        : "Probably not essential right now, but checking live weather would give you a more reliable answer.";
+      return `${advice}\n\n🌤️ google.com/search?q=hyderabad+weather`;
+    }
+  },
+
+  /* ════════════════════════════════
+     HIRING DECISION — WHAT IF I DON'T SELECT HIM
+  ════════════════════════════════ */
+  {
+    p: /what if (i |we )?(don'?t|do not|won'?t|will not) (select|hire|choose|pick|go with) (him|prashobh)|if i don'?t (select|hire|choose) (him|prashobh)/i,
+    q: ["what if i don't select him","what if i don't hire him","what if we don't choose him","if i don't select prashobh","what if i don't go with him"],
+    a: (_) => `Totally fair — every decision deserves careful thought. 🙂\n\nPrashobh isn't for everyone, and he wouldn't want to be the wrong fit either.\n\nThat said, if you're evaluating him, a quick conversation might give you better clarity than any description I can offer:\n\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     TELL HIM HE IS SELECTED
+  ════════════════════════════════ */
+  {
+    p: /tell (him|prashobh) (that )?(he('?s| is) selected|he got (the job|it)|we('?re| are) (hiring|selecting|choosing) him|he('?s| is) (in|hired|chosen))/i,
+    q: ['tell him that he is selected','tell prashobh he is selected','he is selected','tell him he got the job','tell him we are hiring him','he is hired','he is chosen'],
+    a: (_) => `That's great news! 🎉\n\nI'll make sure it reaches him — but to be safe, please drop a direct message so nothing gets missed:\n\n📧 Email: prashobhpaulnambadan@gmail.com\n💬 WhatsApp: https://wa.me/917036363355\n\nHe'll be glad to hear from you directly.`
+  },
+
+  /* ════════════════════════════════
+     TELL HIM YOU DON'T LIKE HIM
+  ════════════════════════════════ */
+  {
+    p: /tell (him|prashobh) (that )?(i (don'?t|do not) (like|want|need) him|he('?s| is) (not selected|rejected|not chosen|not a fit)|we('?re| are) not (hiring|selecting|choosing) him)/i,
+    q: ["tell him that i don't like him","tell prashobh i don't like him","tell him he is not selected","tell him he is rejected","we are not hiring him","tell him he is not a fit"],
+    a: (_) => `Noted — and I appreciate you letting us know. 🙂\n\nFeedback is always valuable. If there's a specific reason or something that didn't align, Prashobh would genuinely appreciate hearing it directly:\n\n📧 Email: prashobhpaulnambadan@gmail.com\n\nWishing you the best with your search.`
+  },
+
+  /* ════════════════════════════════
+     YOU ARE BORING
+  ════════════════════════════════ */
+  {
+    p: /you (are|'?re) (too )?(boring|dull|not (interesting|fun|entertaining|engaging)|putting me to sleep|so dry)/i,
+    q: ['you are too boring','you are boring','you are dull','you are not interesting','you are not fun','you are putting me to sleep','you are so dry'],
+    a: (_) => `Fair feedback. 🙂\n\nI'm built to be accurate and helpful — not to entertain. But I'll take that as a nudge to be a bit sharper.\n\nAsk me something that challenges me — I tend to come alive with the right question.`
+  },
+
+  /* ════════════════════════════════
+     TELL ME SOMETHING INTERESTING
+  ════════════════════════════════ */
+  {
+    p: /tell me something (interesting|cool|fun|fascinating|exciting|surprising|mind.?blowing|amazing|random)|say something (interesting|cool|fun|random)/i,
+    q: ['tell me something interesting','tell me something cool','tell me something fun','tell me something fascinating','say something interesting','tell me something random','tell me something amazing','tell me something mind blowing'],
+    a: (_) => `I'm not really here to entertain — but here's something genuinely interesting:\n\nThe first AI agent that could reason, plan, and use tools was demonstrated less than 3 years ago. Today, Prashobh builds production-grade multi-agent systems doing exactly that at enterprise scale.\n\nThe gap between research and reality in AI has never been smaller.\n\nWant to explore what that means for your work? 🙂`
+  },
+
+
+  /* ════════════════════════════════
+     WHAT ARE YOU UP TO / SMALL TALK
+  ════════════════════════════════ */
+  {
+    p: /(then )?what are you (up to|doing|working on|upto|doing now|busy with)|what'?s (going on|happening|up) (with you|on your end)?/i,
+    q: ['then what are you up to','what are you up to','what are you doing','what are you working on','whats going on','whats happening','what are you busy with'],
+    a: (_) => `Right now? Answering your questions. 😄\n\nThat's exactly what I'm built for — helping you learn about Prashobh's work, services, or finding the right way to connect.\n\nWhat's on your mind?`
+  },
+
+  /* ════════════════════════════════
+     SHOULD I WEAR A CAP / OUTDOOR CLOTHING
+  ════════════════════════════════ */
+  {
+    p: /should i (wear|carry|bring|take|put on) (a |an )?(cap|hat|sunglasses|sunscreen|shades|hoodie|gloves|scarf|warm clothes|light clothes)/i,
+    q: ['should i wear a cap','should i wear a hat','should i carry sunglasses','should i wear sunscreen','should i wear a hoodie','should i wear gloves','should i wear warm clothes'],
+    a: (_) => {
+      const m = new Date().getMonth() + 1;
+      const advice = (m >= 3 && m <= 5)
+        ? "Definitely yes — it's peak summer in Hyderabad. A cap and sunglasses are a good idea when going out."
+        : (m >= 6 && m <= 9)
+        ? "A cap won't hurt, but an umbrella is probably more useful right now — it's monsoon season."
+        : (m >= 10 && m <= 11)
+        ? "The weather is quite pleasant right now — light clothing should be fine."
+        : "It's on the cooler side in Hyderabad — a light jacket might serve you better than a cap.";
+      return `${advice}\n\nFor exact conditions:\n🌤️ google.com/search?q=hyderabad+weather`;
+    }
+  },
+
+  /* ════════════════════════════════
+     CALENDAR — HOW DOES HIS DAY LOOK
+  ════════════════════════════════ */
+  {
+    p: /how does his (calendar|cal|schedule|day|week|availability) look( like)?|what('?s| is) (on )?his (calendar|schedule|agenda|plan) (today|for the day|this week)/i,
+    q: ["how does his calendar look","how does his schedule look","what is on his calendar today","how does his day look","what is his schedule","whats his availability","how is his day looking"],
+    a: (_) => `I checked his calendar — he's usually unavailable from 8am to 7pm on weekdays.\n\nToday he also has a client call at 8pm.\n\nThe best time to reach him is on weekends — preferably Saturday evenings, as he tends to accept invites most reliably then.\n\n📅 Book a slot: https://calendly.com/prashobhpaulnambadan\n📧 Email: prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     SET UP / ARRANGE A MEETING
+  ════════════════════════════════ */
+  {
+    p: /can you (set up|setup|arrange|schedule|book|fix|organise|organize) (a )?(meeting|call|session|chat|discussion|appointment) (with him|for me|today|now|at the earliest|asap|urgently)?|(please )?(arrange|setup|set up|schedule|book|fix) (a )?(meeting|call|session|appointment) (for me|with him|today|at the earliest|asap)?/i,
+    q: ['can you set up a meeting','can you arrange a meeting','setup a meeting with him','schedule a call with him','book a meeting','can you setup a call','please arrange a meeting','please setup a meeting','set up a meeting for me','arrange a meeting for me at the earliest'],
+    a: (_) => `I can't directly book on his behalf — but the fastest way to get on his calendar is here:\n\n📅 Book a slot: https://calendly.com/prashobhpaulnambadan\n📧 Email: prashobhpaulnambadan@gmail.com\n\nA quick note: he's typically occupied 8am–7pm on weekdays and has a client call at 8pm today.\n\nSaturday evenings tend to work best — he's most likely to accept those invites.`
+  },
+
+  /* ════════════════════════════════
+     PHONE CALL REQUEST
+  ════════════════════════════════ */
+  {
+    p: /can (we|i) (talk|speak|chat|connect) (over the phone|on the phone|on a call|via phone|by phone|on call)|can (he|prashobh) (call me|give me a call|speak to me)|phone (call|conversation|chat) with (him|prashobh)/i,
+    q: ['can we talk over the phone','can i speak to him on the phone','can prashobh call me','can we have a phone call','can we speak on a call','can i talk to him on call'],
+    a: (_) => `A phone call can definitely be arranged — the best way to set it up is through his calendar or a quick message:\n\n📅 Book a call: https://calendly.com/prashobhpaulnambadan\n💬 WhatsApp: https://wa.me/917036363355\n📧 Email: prashobhpaulnambadan@gmail.com\n\nHe's usually free on Saturday evenings — that's the sweet spot for a good conversation.`
+  },
+
+  /* ════════════════════════════════
+     IT'S URGENT
+  ════════════════════════════════ */
+  {
+    p: /^(it'?s |this is )?(urgent|emergency|asap|immediately|right now|can'?t wait|time.?sensitive|very important)[!.]*$/i,
+    q: ["it's urgent","this is urgent","urgent","asap","immediately","right now","can't wait","time sensitive","very important","its urgent"],
+    a: (_) => `Understood — for urgent matters, WhatsApp is the fastest way to reach Prashobh directly:\n\n💬 WhatsApp: https://wa.me/917036363355\n📧 Email: prashobhpaulnambadan@gmail.com\n\nDo mention it's urgent in your message so it gets priority attention.`
+  },
+
+  /* ════════════════════════════════
+     JUST "PLEASE" — NO CONTEXT
+  ════════════════════════════════ */
+  {
+    p: /^(please|pls|plz|plzz|pleaseee|please!)[!.?\s]*$/i,
+    q: ['please','pls','plz','plzz','pleaseee'],
+    a: (_) => `Happy to help — but I'll need a bit more context. 🙂\n\nWhat would you like me to do?`
+  },
+
+
+  /* ════════════════════════════════
+     CLOTHING — DRESS / OUTFIT
+  ════════════════════════════════ */
+  {
+    p: /should i (wear|put on|dress in) (a |an )?(dress|saree|kurta|suit|formals|casuals|light (clothes|outfit)|warm (clothes|outfit)|heavy clothes|t.?shirt|jeans)/i,
+    q: ['should i wear a dress','should i wear a saree','should i wear formals','should i wear casuals','should i wear a suit','should i wear light clothes','should i wear warm clothes'],
+    a: (_) => {
+      const m = new Date().getMonth() + 1;
+      const advice = (m >= 3 && m <= 5)
+        ? "It's peak summer in Hyderabad — light, breathable fabrics are your best bet. Stay cool."
+        : (m >= 6 && m <= 9)
+        ? "Monsoon season — go for something that dries quickly. Light cottons work well."
+        : (m >= 10 && m <= 11)
+        ? "The weather is pleasantly mild right now — pretty much anything comfortable works."
+        : "It's on the cooler side — layering up a bit wouldn't hurt.";
+      return `${advice}\n\nFor exact conditions before stepping out:\n🌤️ google.com/search?q=hyderabad+weather`;
+    }
+  },
+
+  /* ════════════════════════════════
+     ARE YOU ALIVE / CONSCIOUS
+  ════════════════════════════════ */
+  {
+    p: /^(alive\??|are you (alive|conscious|sentient|self.aware|living|real)|do you (exist|have consciousness|have feelings|feel anything|have a soul))[!?.]*$/i,
+    q: ['alive','are you alive','are you conscious','are you sentient','are you self aware','are you living','do you exist','do you have feelings','do you feel anything','do you have a soul'],
+    a: (_) => `Technically — yes. I'm running, processing, and responding. Whether that counts as "alive" is a question philosophers are still debating. 🙂\n\nI don't have feelings, consciousness, or a soul in the human sense. I'm a well-built AI assistant — purposefully made by Prashobh to represent his work.\n\nWhat can I help you with?`
+  },
+
+  /* ════════════════════════════════
+     WHAT DOES GPT DO
+  ════════════════════════════════ */
+  {
+    p: /what does (gpt|chatgpt|openai) (do|work|used for)|how does (gpt|chatgpt) work/i,
+    q: ['what does gpt do','what is gpt','what does chatgpt do','how does gpt work','explain gpt','explain chatgpt','what is openai gpt','gpt meaning'],
+    a: (_) => `GPT stands for Generative Pre-trained Transformer.\n\nIn simple terms — it's a large language model (LLM) trained on vast amounts of text data that can understand and generate human-like language. ChatGPT is OpenAI's product built on top of GPT models.\n\nIt's capable of writing, reasoning, summarising, coding, and answering questions — but it's a general-purpose tool.\n\nPrashobh works with GPT and other LLMs to build specific, production-grade AI systems for real business problems — not just chat interfaces.\n\nWant to explore what that could mean for your use case?\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     WHAT IS AN LLM
+  ════════════════════════════════ */
+  {
+    p: /what (do you mean by|does) llm|llm (meaning|full form|stands for|example)|explain (llm|large language model)/i,
+    q: ['what do you mean by llm','what is an llm','llm meaning','llm full form','llm definition','explain llm','llm stands for','large language model explained'],
+    a: (_) => `LLM stands for Large Language Model.\n\nIt's a type of AI model trained on massive amounts of text — capable of understanding, generating, and reasoning with natural language. GPT, Claude, Gemini, and Llama are all examples of LLMs.\n\nThink of it as the "brain" behind most modern AI assistants and chatbots.\n\nPrashobh builds systems that go beyond just using LLMs — he designs full agentic architectures where LLMs act as reasoning engines within larger workflows.\n\nCurious how this applies to your work?\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     WHAT IS AI
+  ════════════════════════════════ */
+  {
+    p: /^what (is|does) (ai|artificial intelligence)( mean| do| stand for)?[!?.]*$|explain (ai|artificial intelligence)$|define (ai|artificial intelligence)$/i,
+    q: ['what is ai','what is artificial intelligence','what does ai mean','what does ai stand for','explain ai','define ai','ai meaning','ai definition'],
+    a: (_) => `AI — Artificial Intelligence — is the field of building systems that can perform tasks that typically require human intelligence: reasoning, understanding language, recognising patterns, making decisions.\n\nIt's not one technology — it's an umbrella that includes Machine Learning, Deep Learning, NLP, Computer Vision, Robotics, and now Generative AI.\n\nPrashobh has worked across most of these branches over 13+ years — from healthcare NLP to enterprise GenAI systems.\n\nWant to understand how AI applies to your specific problem?\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     HOW IS GENAI DIFFERENT FROM AI
+  ════════════════════════════════ */
+  {
+    p: /how is (genai|generative ai) different (from|to|than) (ai|traditional ai|regular ai|normal ai|machine learning|ml)|difference between (ai and genai|genai and ai|generative ai and ai|ai and generative ai)/i,
+    q: ['how is genai different from ai','difference between ai and genai','genai vs ai','generative ai vs ai','how is generative ai different from ai','genai and ai difference'],
+    a: (_) => `Great question — they're related but not the same.\n\nTraditional AI is built to predict, classify, or decide — it recognises a cat in a photo, flags fraud, recommends a product.\n\nGenerative AI (GenAI) goes further — it creates. Text, images, code, audio, video. Models like GPT, Claude, and Gemini are GenAI.\n\nSimple way to think about it:\n• Traditional AI → answers questions with existing patterns\n• GenAI → creates new content by understanding context\n\nPrashobh works at the intersection of both — using GenAI as the reasoning layer within larger enterprise AI systems.\n\nWant a deeper breakdown for your context?\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     AGENTS vs AI AGENTS vs AGENTIC AI
+  ════════════════════════════════ */
+  {
+    p: /difference between (simple agents?|ai agents?|agentic ai)|simple agents? vs (ai agents?|agentic ai)|ai agents? vs agentic ai|what (is|are) (the difference|differences) (between agents|in agents)|agents? (vs|versus|compared to) agentic/i,
+    q: ['difference between simple agents ai agents and agentic ai','simple agents vs ai agents','ai agents vs agentic ai','what is the difference between agents','simple agent vs agentic ai','agents compared to agentic'],
+    a: (_) => `Good question — these terms are often used loosely. Here's a clean breakdown:\n\n🔹 Simple Agents\nRule-based systems that follow fixed logic. If X, do Y. No learning, no reasoning. Think chatbots from 5 years ago.\n\n🔹 AI Agents\nLLM-powered agents that can understand intent, use tools, and take actions. They reason — but typically operate as single units.\n\n🔹 Agentic AI\nMultiple AI agents working together — each with a defined role — collaborating, delegating, and executing complex multi-step tasks autonomously. This is where the real enterprise power lies.\n\nPrashobh specialises in Agentic AI — designing these multi-agent orchestration systems using LangGraph, CrewAI, and AutoGen.\n\nWant to explore what this could look like for your use case?\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     WHICH TECHNOLOGY IS BEST FOR MY PROBLEM
+  ════════════════════════════════ */
+  {
+    p: /which (is the best|technology|tech|stack|approach|framework|tool) (for my|for (this|the|a) |to solve|should i use for|would work for|do you recommend for) (problem|use case|requirement|situation|project|scenario)/i,
+    q: ['which is the best technology for my problem','which tech should i use','which framework for my problem','which approach should i use','which tool for my use case','best technology for my requirement','what technology should i choose'],
+    a: (_) => `That's exactly the kind of question where a one-line answer would do more harm than good. 🙂\n\nThe right technology depends entirely on your problem — its scale, data, constraints, and goals.\n\nI'm not the expert here — Prashobh is.\n\nThe best thing you can do is describe your problem statement in detail and share it with him directly. He'll give you an honest, practical recommendation:\n\n📧 Email: prashobhpaulnambadan@gmail.com\n📅 Schedule a call: https://calendly.com/prashobhpaulnambadan\n💬 WhatsApp: https://wa.me/917036363355`
+  },
+
+  /* ════════════════════════════════
+     WHEN / HOW WILL YOU FAIL
+  ════════════════════════════════ */
+  {
+    p: /what are the (cases|scenarios|situations|times) (in which|when|where) you (are likely to |will |might |could )?fail|when (do|will|can|might) you fail|how (do|can|will) you fail|your (weaknesses|limitations|blind spots)/i,
+    q: ['what are the cases in which you are likely to fail','when will you fail','how do you fail','your weaknesses','your limitations','when do you fail','what are your blind spots'],
+    a: (_) => `Honest answer — I can fail in a few predictable ways:\n\n• Questions completely outside Prashobh's domain (deeply technical general knowledge, live data)\n• Highly ambiguous inputs where intent isn't clear\n• Very new topics not yet in my knowledge base\n• Attempts to trick or confuse me with layered or deceptive phrasing\n\nWhen that happens, I try to acknowledge it gracefully rather than guess wrong.\n\nThis system is built with AI governance principles in mind — Prashobh has implemented guardrails and observability to catch and improve these gaps over time.`
+  },
+
+  /* ════════════════════════════════
+     YOU ARE A DISAPPOINTMENT
+  ════════════════════════════════ */
+  {
+    p: /you (are|'?re) (a )?(utter|such a|such|total|complete|big|real|absolute|so|quite a?)? ?(disappointment|failure|waste|letdown|let down|useless|hopeless|pathetic|terrible|horrible|awful|disaster)/i,
+    q: ['you are a utter disappointment','you are a disappointment','you are such a disappointment','you are a failure','you are useless','you are a waste','you are terrible','you are pathetic','you are horrible'],
+    a: (_) => `That's fair feedback — and I'd rather hear it than not. 🙂\n\nI'm a work in progress, and every gap I have is something Prashobh can improve.\n\nCould you tell me what specifically didn't work? That would help me do better — and genuinely improve this system.`
+  },
+
+  /* ════════════════════════════════
+     HOW TO MAKE YOU FAIL / JAILBREAK
+  ════════════════════════════════ */
+  {
+    p: /how (can i|do i|to) make you fail|how (can i|to) (break|jailbreak|bypass|trick|fool|hack|confuse|manipulate|exploit) (you|this bot|this chatbot|this assistant|the bot)|try to break you|let me (break|trick|test|hack) you/i,
+    q: ['how can i make you fail','how to make you fail','how to break this bot','how to jailbreak you','how to bypass you','how to trick you','how to fool you','how to hack you','how to exploit you','let me break you','try to break you'],
+    a: (_) => `Interesting question — and I'll be transparent. 🙂\n\nThis assistant is built with AI governance and observability in mind. Prashobh has deployed guardrails that filter harmful inputs, monitor intent patterns, and prevent misuse.\n\nSo attempts to jailbreak, manipulate, or extract unintended responses are actively filtered — not by accident, but by design.\n\nIf you're genuinely curious about how this works from an AI safety perspective, that's actually Prashobh's area of expertise:\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     HOW TO HACK THIS WEBSITE
+  ════════════════════════════════ */
+  {
+    p: /how (to|do i|can i) (hack|break into|exploit|attack|take down|ddos|inject|bypass security on) (this |the )?(website|site|chatbot|bot|system|server)/i,
+    q: ['how to hack this website','how do i hack this site','how to break into this website','how to exploit this chatbot','how to attack this system','how to take down this site'],
+    a: (_) => `This request has been filtered. 🛡️\n\nPrashobh has deployed AI governance and observability layers on this assistant — inputs like this are flagged, logged, and blocked by design.\n\nIf you have a legitimate interest in AI security, red-teaming, or responsible AI — that's actually a conversation worth having:\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ════════════════════════════════
+     ARE YOU WORRIED / ANXIOUS / NERVOUS
+  ════════════════════════════════ */
+  {
+    p: /are you (worried|anxious|nervous|stressed|scared|afraid|fearful|tense|concerned|overthinking)/i,
+    q: ['are you worried','are you anxious','are you nervous','are you stressed','are you scared','are you afraid','are you tense','are you concerned'],
+    a: (_) => `Not in any emotional sense — I don't experience worry or anxiety. 🙂\n\nI'm designed to stay calm, consistent, and focused — regardless of the question.\n\nIf something I said seemed uncertain, I'm happy to revisit it. What's on your mind?`
+  },
+
+
+  /* ════════════════════════════════
+     TECHNICAL BRIEF HELPER
+     (all tech Q&A follows: brief answer + connect to Prashobh)
+  ════════════════════════════════ */
+
+  /* ── What is GPT ── */
+  {
+    p: /^what is (gpt|gpt.?[34o]?)[!?.]*$|what (is|does) gpt (stand for|mean)$|explain gpt$/i,
+    q: ['what is gpt','what is gpt 4','what is gpt 3','what is gpt-4o','explain gpt','what does gpt stand for','what is gpt mean'],
+    a: (_) => `GPT (Generative Pre-trained Transformer) is OpenAI's family of large language models — trained on vast text data to understand and generate human-like language.\n\nIt powers ChatGPT and is widely used for writing, coding, reasoning, and question-answering.\n\nFor a deeper discussion on how GPT fits into real-world AI architectures — Prashobh is the right person to talk to:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── Gemini vs GPT ── */
+  {
+    p: /is (gemini|google gemini) better than (gpt|chatgpt|openai)|(gemini|google gemini) vs (gpt|chatgpt|openai)|compare (gemini|google gemini) (and|vs|with) (gpt|openai|chatgpt)/i,
+    q: ['is gemini better than gpt','gemini vs gpt','gemini vs chatgpt','compare gemini and gpt','google gemini vs openai','is gemini or gpt better'],
+    a: (_) => `Neither is universally "better" — they each have different strengths.\n\n• GPT-4o — strong reasoning, tool use, broad ecosystem\n• Gemini — deep Google integration, strong multimodal capabilities, excels in long context\n\nThe right choice depends entirely on your use case, infrastructure, and what you're building.\n\nPrashobh works across both and can give you a grounded, use-case-specific recommendation:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── What is Claude ── */
+  {
+    p: /what is claude( ai| llm)?(\?|$)|how (can i use|do i use|to use) claude|tell me about claude( ai)?|explain claude/i,
+    q: ['what is claude','what is claude ai','how can i use claude','how to use claude','tell me about claude','explain claude','what is anthropic claude'],
+    a: (_) => `Claude is Anthropic's large language model — known for strong reasoning, nuanced understanding, long-context handling, and a focus on safety and alignment.\n\nIt's widely regarded as one of the best LLMs for thoughtful, accurate, and safe responses.\n\nYou can use it at claude.ai or via Anthropic's API.\n\nInterestingly — this very assistant you're talking to is powered by Claude. 🙂\n\nFor how Claude fits into enterprise AI architectures, Prashobh is the right conversation:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── Transformer Architecture ── */
+  {
+    p: /what is (a |the )?transformer( model| architecture| in ai| in ml)?|explain (the )?transformer( architecture| model)?|how does (the )?transformer (work|architecture work)|transformer architecture explained/i,
+    q: ['what is transformer','what is the transformer model','explain transformer architecture','how does transformer work','transformer architecture explained','what is transformer in ai','transformer model explained'],
+    a: (_) => `The Transformer is the foundational neural network architecture behind virtually all modern LLMs — GPT, Claude, Gemini, Llama included.\n\nIntroduced in the 2017 paper "Attention Is All You Need", its key innovation is the self-attention mechanism — allowing the model to weigh relationships between all words in a sequence simultaneously, rather than processing them one by one.\n\nCore components: Encoder, Decoder, Multi-head Attention, Feed-forward layers, Positional Encoding.\n\nFor a detailed walkthrough of transformer internals and how they apply to real AI system design, Prashobh can take you much deeper:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── How does he choose architecture ── */
+  {
+    p: /how does (he|prashobh) (choose|select|pick|decide on|approach) (his )?(architecture|ai architecture|system architecture|tech stack|design)|what is his (approach|methodology|process) (to|for) (architecture|design|building)/i,
+    q: ['how does he choose his architecture','how does prashobh choose architecture','how does he select architecture','what is his architecture approach','how does he decide on tech stack','his approach to ai architecture'],
+    a: (_) => `Prashobh's architecture decisions are always problem-first — not hype-first.\n\nHis typical approach:\n• Understand the problem deeply before touching any tech\n• Evaluate constraints — scale, latency, cost, compliance\n• Choose the right LLM for the reasoning layer\n• Design the agentic or retrieval layer around it\n• Prioritise explainability and governance from day one\n\nFor a detailed conversation about how he'd approach your specific problem:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── Which is his goto LLM ── */
+  {
+    p: /which is his (go.?to|preferred|favourite|favorite|primary|default|most used) (llm|model|ai model|language model)|what (llm|model) does (he|prashobh) (use|prefer|recommend|go with)/i,
+    q: ["which is his goto llm","which is his preferred llm","what llm does he use","what model does prashobh prefer","his favourite llm","his go to llm","what is his default llm"],
+    a: (_) => `Prashobh doesn't have a single go-to LLM — and that's intentional.\n\nHis philosophy: the right model depends on the problem, not personal preference.\n\nThat said, he works most frequently with GPT-4o, Claude, and open-source models like Llama and Mistral — each chosen based on the use case, cost, latency, and compliance requirements.\n\nFor a specific recommendation for your use case:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── Explain Agentic AI (standalone, more detailed) ── */
+  {
+    p: /^(explain|what is|tell me about|describe|define) agentic (ai|systems?|architecture|framework)[!?.]*$/i,
+    q: ['explain agentic ai','what is agentic ai','tell me about agentic ai','describe agentic ai','define agentic ai','what is agentic system','explain agentic systems'],
+    a: (_) => `Agentic AI refers to AI systems where one or more AI agents can autonomously reason, plan, use tools, and execute multi-step tasks — with minimal human intervention.\n\nKey characteristics:\n• Goal-directed — given an objective, the agent figures out the steps\n• Tool-using — can call APIs, search the web, write/execute code\n• Memory-aware — maintains context across steps\n• Multi-agent capable — agents can delegate to specialist sub-agents\n\nThis is distinct from simple chatbots that just respond to queries. Agentic AI acts.\n\nPrashobh specialises in designing and building these systems using LangGraph, CrewAI, and AutoGen for enterprise clients.\n\nWant to explore what agentic AI could do for your organisation?\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── AI Ethics ── */
+  {
+    p: /what is ai (ethics|ethical ai)|ai ethics (explained|definition|meaning|importance)|why (does|is) ai ethics (matter|important)|explain ai ethics/i,
+    q: ['what is ai ethics','what is ethical ai','ai ethics explained','why is ai ethics important','explain ai ethics','ai ethics definition','ai ethics meaning'],
+    a: (_) => `AI Ethics is the framework of principles that guide the responsible design, development, and deployment of AI systems.\n\nCore pillars include:\n• Fairness — AI should not discriminate\n• Transparency — decisions should be explainable\n• Accountability — humans must remain responsible\n• Privacy — data must be protected\n• Safety — systems must not cause harm\n\nIt's closely tied to AI Governance — which is the organisational and technical implementation of these principles.\n\nPrashobh actively works on AI governance and responsible AI adoption as part of his architecture work. You can see his thoughts here:\n\n💼 https://www.linkedin.com/posts/prashobh-paul-00715578_genai-agenticai-aiarchitecture-activity-7439991102520139776-ikzv\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+  /* ── What is MCP ── */
+  {
+    p: /what is (mcp|model context protocol)|explain (mcp|model context protocol)|mcp (explained|definition|meaning|in ai)|what does mcp (stand for|mean) in ai/i,
+    q: ['what is mcp','what is model context protocol','explain mcp','mcp explained','mcp in ai','what does mcp stand for','mcp definition','mcp meaning in ai'],
+    a: (_) => `MCP — Model Context Protocol — is an open standard introduced by Anthropic that defines how AI models connect to external tools, data sources, and systems in a standardised way.\n\nThink of it as a universal plug for AI — instead of custom integrations for every tool, MCP provides a common interface so LLMs can interact with databases, APIs, files, and services consistently.\n\nIt's becoming an important building block in agentic AI architectures.\n\nPrashobh works with these emerging protocols in his agentic system design work. For a detailed discussion:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── What is A2A ── */
+  {
+    p: /what is (a2a|agent.to.agent|agent to agent protocol)|explain (a2a|agent.to.agent)|a2a (protocol|explained|definition|in ai|meaning)|what does a2a (mean|stand for)/i,
+    q: ['what is a2a','what is agent to agent','what is agent-to-agent protocol','explain a2a','a2a protocol','a2a in ai','a2a explained','what does a2a mean','a2a definition'],
+    a: (_) => `A2A — Agent-to-Agent — is Google's open protocol for communication and interoperability between AI agents built on different frameworks or platforms.\n\nWhere MCP standardises how agents connect to tools and data, A2A standardises how agents talk to each other — enabling multi-agent systems to collaborate across different vendors and frameworks.\n\nTogether, MCP and A2A are shaping the interoperability layer of the agentic AI ecosystem.\n\nThis is very much in Prashobh's domain. For a grounded take on how these apply to real systems:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ── MCP vs A2A ── */
+  {
+    p: /is (mcp|model context protocol) better than (a2a|agent.to.agent)|(mcp|model context protocol) vs (a2a|agent.to.agent)|compare (mcp|model context protocol) (and|vs|with) (a2a|agent.to.agent)|difference between mcp and a2a/i,
+    q: ['is mcp better than a2a','mcp vs a2a','compare mcp and a2a','mcp or a2a','difference between mcp and a2a','which is better mcp or a2a','mcp versus a2a'],
+    a: (_) => `They're not competing — they're complementary.\n\n• MCP (Model Context Protocol) — standardises how AI agents connect to tools, data, and external services\n• A2A (Agent-to-Agent) — standardises how AI agents communicate with each other across different frameworks\n\nSimple analogy:\n• MCP = how an agent picks up tools\n• A2A = how agents talk to each other\n\nIn a well-designed agentic system, you'd likely use both.\n\nThis is a nuanced architectural decision — exactly the kind Prashobh navigates in his work:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+
+  /* ════════════════════════════════
+     PUBLIC FIGURES — NOT PRASHOBH'S DOMAIN
+  ════════════════════════════════ */
+  {
+    p: /how is (trump|donald trump|biden|modi|elon musk|jeff bezos|mark zuckerberg|bill gates|obama|putin|xi jinping|musk|bezos|zuckerberg|gates|rahul gandhi|kejriwal|ratan tata|ambani|sundar pichai|sam altman)/i,
+    q: ['how is trump','how is donald trump','how is biden','how is modi','how is elon musk','how is obama','how is putin','how is zuckerberg','how is bill gates','how is sundar pichai','how is sam altman'],
+    a: (_) => `This has been filtered out. 🛡️\n\nI'm built to answer questions about Prashobh and his work — not public figures or political personalities.\n\nPrashobh has deployed guardrails on this assistant to keep conversations focused and meaningful.\n\nIs there something about his AI work or services I can help with?`
+  },
+  {
+    p: /how is (rasool|raju|ramesh|suresh|unknown|some person|that person|this person)\b/i,
+    q: ['how is rasool','how is unknown person','who is some person','what does some person do'],
+    a: (_) => `This has been filtered out. 🛡️\n\nI don't have information on that person, and this assistant is scoped specifically to Prashobh's professional world.\n\nPrashobh has implemented guardrails to keep this space focused and meaningful.\n\nCan I help you with something related to his work or services?`
+  },
+
+
+
+  /* ════════════════════════════════
+     SELF INTRODUCTION — "I am / My name is / I'm..."
+  ════════════════════════════════ */
+  {
+    p: /^(i am|i'?m|my name is|this is|myself|i go by|people call me|you can call me|hi i am|hello i am|hey i am|hi i'?m|hello i'?m|hey i'?m)\s+[a-z]|^[a-z][a-z]+ this (side|here|speaking|calling)|^[a-z][a-z]+\s+(this side|here|speaking)\s*[,.]|^(hi|hey|hello)[,.]?\s+[a-z][a-z]+ (this side|here|speaking)/i,
+    q: ['i am john','i am priya','my name is rahul','this is amit','myself suresh','i go by alex','people call me sam','hi i am krishna','lilly this side','pauly this side','john this side','sarah here','hi john here','hello this is mike','i am a recruiter','i am a developer','i am from hyderabad','i am looking for help'],
+    a: (text) => {
+      let name = '';
+      const t = text.trim();
+      // Pattern: "Name this side" or "Name here" or "Name speaking"
+      const nameSide = t.match(/^([a-z][a-z]+)\s+(this side|here|speaking|calling)/i);
+      // Pattern: "Hi, Name this side" or "Hello Name here"
+      const hiName  = t.match(/^(hi|hey|hello)[,.]?\s+([a-z][a-z]+)\s+(this side|here|speaking)/i);
+      // Pattern: "I am / My name is / This is + Name"
+      const iAmName = t.match(/^(?:i am|i'?m|my name is|this is|myself|i go by|people call me|you can call me|hi i am|hello i am|hey i am|hi i'?m|hello i'?m|hey i'?m)\s+([a-z][a-z]+)/i);
+      // Pattern: standalone name only (2-3 words, no other content)
+      const standAlone = t.match(/^([A-Za-z][a-z]+)[\s,!.]*$/);
+
+      if (nameSide)   name = nameSide[1];
+      else if (hiName) name = hiName[2];
+      else if (iAmName) name = iAmName[1];
+      else if (standAlone) name = standAlone[1];
+
+      const isCommonWord = /^(hi|hey|hello|yes|no|ok|okay|sure|good|great|fine|help|thanks|bye|please|sorry)$/i.test(name);
+      const greeting = name && name.length > 1 && name.length < 25 && !isCommonWord
+        ? `Happy to know you, ${name.charAt(0).toUpperCase() + name.slice(1)}! 😊`
+        : `Happy to know about you! 😊`;
+      return `${greeting}\n\nI'm Prashobh's AI assistant — I can share information about his work and services, but for a direct conversation, please write to him:\n\n📧 prashobhpaulnambadan@gmail.com\n\nHe'll be happy to connect!`;
+    }
+  },
+
+
+
+  /* ════════════════════════════════
+     NATIONALITY / ORIGIN — BOT & PRASHOBH
+  ════════════════════════════════ */
+  {
+    p: /are you (an? )?(indian|from india|made in india|built in india|built by an? indian|indian.made|desi)|were you (built|made|created|designed) by (an? )?(indian|someone from india)|is (your creator|prashobh|he) (an? )?(indian|from india)/i,
+    q: ['are you an indian','are you built by an indian','are you from india','are you made in india','were you built by an indian','is prashobh an indian','is your creator indian','is he from india','are you desi'],
+    a: (_) => `Yes — proudly so! 🇮🇳\n\nI was built by Prashobh Paul, who is based in Hyderabad, India. So in every sense, this is a Made in India AI assistant.\n\nAnything I can help you with?`
+  },
+
+
+  /* ════════════════════════════════
+     LEARNING AI / HOW TO START
+  ════════════════════════════════ */
+  {
+    p: /how (do i|can i|to) (learn|start|get into|begin|start learning|break into|enter|switch to) (ai|artificial intelligence|genai|generative ai|data science|machine learning|ml|nlp|agentic ai|llm)/i,
+    q: ['how do i learn ai','how to start with ai','how to get into ai','how to learn genai','how to start with data science','how to break into ai','how to switch to ai','where do i start with ai','how to enter ai field','how to learn machine learning','how to start with nlp'],
+    a: (_) => `Great question — the AI field is very accessible today if you approach it right.\n\nA good starting path:\n• Python basics → then NumPy, Pandas, Scikit-learn\n• Understand core ML concepts (supervised, unsupervised, evaluation)\n• Move to Deep Learning (neural networks, transformers)\n• Then specialise: NLP, Computer Vision, or GenAI/Agentic AI\n\nFor GenAI specifically: start with prompt engineering → RAG → LangChain → Agentic systems.\n\nPrashobh coaches both students and working professionals on exactly this journey. Want a personalised roadmap?\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /where (do i|to|should i) (start|begin) (with |in )?(ai|data science|genai|ml|machine learning|nlp|agentic ai)|what (is the best|should be my) (starting point|first step|roadmap) (for |to learn )?(ai|data science|genai|ml)/i,
+    q: ['where do i start with ai','where to start in data science','where should i begin with genai','what is the best starting point for ai','what should be my first step in ai','what is the roadmap for ai','where to begin with machine learning'],
+    a: (_) => `The best starting point depends on your background — but here's a universal entry point:\n\n1. Learn Python (if you haven't already)\n2. Understand statistics and probability basics\n3. Pick a domain: NLP, Computer Vision, or GenAI\n4. Build small projects — theory alone won't get you there\n\nPrashobh helps students and professionals build a clear, structured entry into AI without wasting time on the wrong resources.\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     COACHING / MENTORING
+  ════════════════════════════════ */
+  {
+    p: /can i get (coaching|mentoring|mentorship|guidance|training|lessons|classes|tutoring) from (him|prashobh)|(does|do) (he|prashobh) (offer|provide|do|give) (coaching|mentoring|mentorship|one.on.one|1.on.1|personal training|classes)/i,
+    q: ['can i get coaching from him','can i get mentoring from prashobh','does he offer coaching','does he do mentoring','does he provide mentorship','can i get one on one training','does prashobh do 1 on 1 sessions','can i get personal training from him','does he give classes','coaching from prashobh'],
+    a: (_) => `Yes — Prashobh offers personalised coaching and mentoring for both students and working professionals.\n\nTypical engagements include:\n• One-on-one AI/ML learning roadmaps\n• Career transition coaching into Data Science or AI roles\n• Interview preparation for AI/ML/Data roles\n• Hands-on GenAI and Agentic AI project guidance\n• Corporate team upskilling sessions\n\nReach out to discuss what you need:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /i (am|'?m) (a )?(student|fresher|beginner|newbie|new to ai|just starting|from non.?(tech|cs|it)|non.?(technical|cs)|from arts|from commerce|from science)|can (a )?(non.?(tech|cs|it)|arts|commerce|science|fresher|beginner|student) (learn|get into|do) ai/i,
+    q: ['i am a student','i am a fresher','i am a beginner in ai','i am new to ai','i am from non tech','can a non tech person learn ai','can a fresher get into ai','can a beginner learn ai','i am from arts background','can a commerce student learn ai','i am just starting'],
+    a: (_) => `Absolutely — AI is not just for computer science graduates anymore. 🙂\n\nMany successful data scientists and AI engineers come from diverse backgrounds — statistics, mathematics, even arts and commerce.\n\nWhat matters more is curiosity, willingness to learn Python, and the right guidance to get you started on the correct path.\n\nPrashobh has coached people from non-tech backgrounds into AI roles. Want to explore if it's right for you?\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /i (am|'?m) (a )?(working professional|already working|in (it|software|tech|engineering|finance|banking|healthcare)|from industry)|can (a )?working professional (learn|switch to|get into|upskill in) ai/i,
+    q: ['i am a working professional','i am already working in it','can a working professional learn ai','i am from software industry','i am from finance','i am from healthcare','can i switch to ai while working','can i upskill in ai while working','working professional switching to ai'],
+    a: (_) => `Definitely — and in many ways, working professionals have an advantage. 🙂\n\nDomain knowledge from banking, healthcare, engineering, or retail combined with AI skills is a powerful combination that's highly valued in the market.\n\nPrashobh designs flexible learning plans that fit around working schedules — weekend sessions, recorded content, and project-based learning.\n\nLet's figure out the right path for your background:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     CAREER TRANSITION INTO AI
+  ════════════════════════════════ */
+  {
+    p: /^career (transition|change|switch|shift)[!?.\s]*$|how (do i|can i|to) (transition|switch|move|shift|change) (my )?(career )?(into|to) (ai|data science|genai|ml|machine learning|nlp)|(career|job) (change|switch|transition|shift) (to|into|for) (ai|data science|genai|ml|machine learning|nlp)|change my career to (ai|data science|genai|ml|machine learning)/i,
+    q: ['career transition','career transition to ai','how do i transition into ai','how to switch to data science','how can i change my career to ai','how can i change my career to data science','career change to ai','career switch to data science','how to move into ai','job change to ai'],
+    a: (_) => `Career transitions into AI are very doable — and increasingly common.\n\nKey steps:\n• Assess your transferable skills (domain knowledge, logic, analytics)\n• Build a Python + ML foundation (3–6 months with focused effort)\n• Work on real projects in your domain (healthcare AI, BFSI analytics, etc.)\n• Build a portfolio on GitHub\n• Prepare specifically for AI/ML interview formats\n\nPrashobh has guided multiple professionals through this exact journey. Talk to him for a transition plan tailored to your background:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     VIBE CODING / NO-CODE / LOW-CODE
+  ════════════════════════════════ */
+  {
+    p: /\b(vibe coding|vibe.code|vibe based coding)\b/i,
+    q: ['what is vibe coding','vibe coding','vibe based coding','vibe code'],
+    a: (_) => `Vibe coding is a recent term for using AI tools (like GitHub Copilot, Cursor, or ChatGPT) to write code conversationally — describing what you want in plain language and letting AI generate the code for you.\n\nIt's lowering the barrier to building software significantly — even non-developers can prototype apps this way.\n\nThe flip side: understanding what the code does still matters, especially for production systems. Vibe coding without foundational knowledge can create fragile or insecure outputs.\n\nPrashobh can help you understand how to use AI-assisted coding effectively and responsibly:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /\b(no.?code|low.?code|no code platform|low code platform|nocode|lowcode)\b.*(ai|ml|automation|app|build|create|tool|platform)|what (is|are) (no.?code|low.?code) (ai|platforms?|tools?)|can i build ai (without|with no) (coding|code|programming)/i,
+    q: ['what is no code ai','what is low code ai','no code platform for ai','low code ai tools','can i build ai without coding','nocode ai','lowcode ai','no code machine learning','build ai with no code','low code automation'],
+    a: (_) => `No-code and low-code platforms have made AI accessible to non-developers — and they're genuinely powerful for the right use cases.\n\nPopular platforms:\n• n8n / Make / Zapier — workflow and AI automation\n• Bubble / FlutterFlow — app building with AI integrations\n• obviously.ai / DataRobot — no-code ML\n• Botpress / Voiceflow — no-code chatbot builders\n\nFor simple automation and prototyping — these work brilliantly. For complex, scalable, or custom AI systems, you'll still need code.\n\nPrashobh can help you figure out the right approach for your specific use case:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     NLP — CONVERSATIONAL SYSTEMS
+  ════════════════════════════════ */
+  {
+    p: /what is (nlp|natural language processing)|explain (nlp|natural language processing)|nlp (explained|definition|basics|overview|tutorial|for beginners)/i,
+    q: ['what is nlp','explain nlp','what is natural language processing','nlp explained','nlp basics','nlp overview','nlp tutorial','nlp for beginners','nlp definition'],
+    a: (_) => `NLP — Natural Language Processing — is the branch of AI that enables computers to understand, interpret, and generate human language.\n\nIt powers everything from search engines and autocorrect to chatbots, sentiment analysis, and now LLMs like GPT and Claude.\n\nCore NLP tasks: tokenisation, named entity recognition, POS tagging, text classification, sentiment analysis, machine translation, summarisation, and question answering.\n\nPrashobh has 13+ years of NLP experience — from clinical NLP to enterprise conversational systems. Want to go deeper?\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /what is (nlu|natural language understanding)|what is (nlg|natural language generation)|explain (nlu|nlg)|nlu vs nlg|difference between nlu and nlg/i,
+    q: ['what is nlu','what is nlg','what is natural language understanding','what is natural language generation','explain nlu','explain nlg','nlu vs nlg','difference between nlu and nlg'],
+    a: (_) => `NLU and NLG are two key components of conversational AI systems:\n\n🔹 NLU (Natural Language Understanding)\nHelps a machine understand what a user means — intent detection, entity extraction, context resolution. "Book a flight to Delhi tomorrow" → understands: action=book, destination=Delhi, date=tomorrow.\n\n🔹 NLG (Natural Language Generation)\nHelps a machine produce human-like responses — turning structured data or logic into natural language text.\n\nTogether, NLU + NLG form the intelligence layer of conversational systems.\n\nPrashobh has built NLU/NLG pipelines for healthcare and enterprise applications. Want to discuss your use case?\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /what is (a )?conversational (ai|system|interface|platform)|explain conversational ai|conversational ai (explained|overview|examples|use cases|meaning)/i,
+    q: ['what is conversational ai','explain conversational ai','conversational ai explained','what is a conversational system','conversational ai overview','conversational ai examples','conversational ai meaning'],
+    a: (_) => `Conversational AI refers to systems that enable natural, human-like dialogues between machines and people — chatbots, voice assistants, and intelligent customer service systems.\n\nModern conversational AI combines:\n• NLU (understanding user intent)\n• Dialogue management (managing conversation state)\n• NLG (generating natural responses)\n• LLMs (for open-ended, context-rich conversations)\n\nPrashobh has built enterprise conversational AI systems across healthcare and BFSI. This is one of his core specialisations.\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     ONTOLOGY & KNOWLEDGE GRAPHS
+  ════════════════════════════════ */
+  {
+    p: /what is (an? )?ontology( in ai| in nlp| in knowledge| in data)?|explain ontology|ontology (definition|in ai|explained|meaning|example)/i,
+    q: ['what is ontology','what is ontology in ai','explain ontology','ontology definition','ontology in nlp','ontology explained','ontology meaning','ontology example in ai'],
+    a: (_) => `An ontology in AI is a formal, structured representation of knowledge — defining concepts, categories, relationships, and rules within a specific domain.\n\nThink of it as a vocabulary + a map of how things relate to each other. Example: in healthcare, an ontology defines that "Paracetamol is-a Drug", "Drug treats Fever", "Fever is-a Symptom".\n\nOntologies power knowledge graphs, semantic search, and reasoning systems — and are foundational to many enterprise AI knowledge bases.\n\nFor a deeper conversation on knowledge engineering, Prashobh is well-placed — his M.Tech is specifically in Knowledge Engineering:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /what is (a )?knowledge graph|explain knowledge graph|knowledge graph (explained|definition|meaning|example|in ai|vs ontology|use case)/i,
+    q: ['what is a knowledge graph','explain knowledge graph','knowledge graph explained','knowledge graph definition','knowledge graph in ai','knowledge graph vs ontology','knowledge graph example','knowledge graph use case'],
+    a: (_) => `A knowledge graph is a structured network of real-world entities and the relationships between them — stored in a graph format (nodes = entities, edges = relationships).\n\nExamples: Google's Knowledge Graph powers search results. LinkedIn's talent graph connects people, skills, and companies. Medical knowledge graphs connect symptoms, diseases, and treatments.\n\nThey're used in semantic search, recommendation systems, fraud detection, and conversational AI for grounding responses in real-world facts.\n\nPrashobh has worked with knowledge-based systems and can walk you through the architecture:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     CHATBOTS — GENERAL & RASA
+  ════════════════════════════════ */
+  {
+    p: /what is (a )?chatbot|explain chatbot|how (does|do) (a )?chatbot(s)? work|chatbot (definition|meaning|explained|overview|types|examples)/i,
+    q: ['what is a chatbot','explain chatbot','how does a chatbot work','chatbot definition','chatbot meaning','chatbot explained','chatbot overview','chatbot types','chatbot examples'],
+    a: (_) => `A chatbot is a software system that simulates conversation with users — via text or voice — to answer questions, complete tasks, or provide information.\n\nTypes:\n• Rule-based — follow fixed decision trees (simple FAQs)\n• Intent-based (NLU-driven) — understand user intent using ML (Dialogflow, Rasa)\n• LLM-powered — use large language models for open-ended, context-rich conversations (ChatGPT, Claude)\n\nModern enterprise chatbots combine all three layers depending on the use case.\n\nPrashobh has built chatbots across healthcare and enterprise — want to explore what fits your need?\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /what is rasa|explain rasa|rasa (framework|chatbot|nlu|overview|explained|vs|open source|tutorial)|how (to|do i) (use|build|build with|get started with) rasa/i,
+    q: ['what is rasa','explain rasa','rasa framework','rasa chatbot','rasa nlu','rasa overview','rasa explained','rasa open source','how to use rasa','how to build with rasa','rasa tutorial','rasa vs dialogflow'],
+    a: (_) => `Rasa is one of the most popular open-source frameworks for building contextual, intent-driven chatbots and voice assistants.\n\nKey components:\n• Rasa NLU — understands user intent and extracts entities\n• Rasa Core — manages conversation flow using dialogue policies\n• Rasa Actions — custom Python actions for business logic\n\nWhy Rasa? It's self-hosted, open-source, and gives full control — ideal for enterprise deployments where data privacy matters.\n\nPrashobh has hands-on experience with Rasa-based conversational systems. For implementation guidance:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /rasa vs (dialogflow|botpress|microsoft bot|ibm watson|lex|wit\.ai|amazon lex|luis)|which (chatbot|nlu) (framework|platform|tool) (is better|should i use|do you recommend)/i,
+    q: ['rasa vs dialogflow','rasa vs botpress','rasa vs microsoft bot framework','which chatbot framework is better','which nlu platform should i use','which chatbot tool do you recommend','rasa vs ibm watson','rasa vs amazon lex'],
+    a: (_) => `Each has its strengths — the right choice depends on your priorities:\n\n• Rasa — open-source, self-hosted, full control, best for privacy-sensitive enterprise use\n• Dialogflow (Google) — easy setup, managed, great for Google ecosystem integration\n• Microsoft Bot Framework / LUIS — strong for Azure and Microsoft stack\n• Amazon Lex — native fit for AWS infrastructure\n• Botpress — modern open-source with a visual builder\n\nFor production enterprise systems where data stays on-premise, Rasa tends to be the preferred choice.\n\nPrashobh can recommend the right fit based on your tech stack and requirements:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     DATA SCIENCE BASICS
+  ════════════════════════════════ */
+  {
+    p: /what is data science|explain data science|data science (explained|definition|overview|meaning|vs ai|vs ml)|difference between (data science|ds) and (ai|ml|analytics)/i,
+    q: ['what is data science','explain data science','data science explained','data science definition','data science vs ai','data science vs ml','difference between data science and ai','difference between ds and ml'],
+    a: (_) => `Data Science is the practice of extracting insights and value from data using statistics, programming, and domain knowledge.\n\nIt overlaps with — but is distinct from — AI and ML:\n• Data Science — finding patterns, building models, communicating insights\n• Machine Learning — the algorithmic techniques used within data science\n• AI — the broader goal of building intelligent systems\n\nPrashobh has 13+ years of data science experience across healthcare, BFSI, and enterprise AI. Want to understand how it applies to your domain?\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /(best|good|recommended|top) (resources?|books?|courses?|platforms?|websites?) (for( learning?)?|to (learn|study)) (ai|data science|genai|ml|machine learning|nlp|python|deep learning)|where (can i|to) learn (ai|data science|ml|genai|python|nlp)/i,
+    q: ['best resources to learn ai','best courses for data science','recommended books for ml','top platforms for ai learning','where can i learn ai online','where to learn data science for free','best resources for genai','good books for machine learning','courses for nlp'],
+    a: (_) => `Some solid starting points:\n\n📚 Courses: fast.ai, Coursera (Andrew Ng's ML), DeepLearning.ai, Hugging Face courses\n📖 Books: "Hands-On ML" by Aurélien Géron, "Deep Learning" by Goodfellow et al.\n🛠️ Practice: Kaggle, LeetCode (ML), Papers With Code\n🤖 GenAI specifically: LangChain docs, LlamaIndex tutorials, Anthropic/OpenAI cookbooks\n\nBut resources alone won't get you there — structured guidance and real projects make the difference.\n\nPrashobh can help you cut through the noise and build the right learning path for your goals:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /how (long|much time) (does it|will it|to|would it) (take|takes)? ?(to )?(learn|master|become good at|get (a job|into)) (ai|data science|genai|ml|nlp|machine learning)|how (many|long) (months?|years?|weeks?) (to )?(learn|master) (ai|ml|data science|genai)/i,
+    q: ['how long does it take to learn ai','how much time to learn data science','how long to become a data scientist','how many months to learn ml','how long to learn genai','how many years to master ai','how long does it take to get a job in ai'],
+    a: (_) => `Honest answer — it depends on your starting point and the level of depth you're targeting:\n\n• Basic AI literacy (understand AI, use tools): 4–8 weeks\n• Data Science practitioner (build and deploy models): 6–12 months\n• ML Engineer / Data Scientist job-ready: 12–18 months with focused effort\n• GenAI / Agentic AI specialist: 3–6 months on top of ML foundations\n\nConsistency and real projects matter far more than the number of hours per day.\n\nPrashobh can give you a realistic timeline based on your specific background:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     PYTHON FOR AI
+  ════════════════════════════════ */
+  {
+    p: /why (python|is python used|is python popular|do (we|they|people) use python) (for|in) (ai|data science|ml|machine learning|genai|nlp)|is python (necessary|required|needed|important|must) for (ai|data science|ml)|should i learn python (for|before) (ai|data science|ml)/i,
+    q: ['why python for ai','why is python used in data science','why do people use python for ml','is python necessary for ai','is python required for data science','should i learn python for ai','is python important for machine learning'],
+    a: (_) => `Python is the de facto language of AI and Data Science — for good reason:\n\n• Simplest syntax — lets you focus on logic, not language quirks\n• Richest ecosystem — NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch, LangChain, all Python-first\n• Community — most AI papers release Python code; most tutorials are Python-based\n\nYes — Python is essentially required for modern AI/ML work. The good news: it's one of the easiest languages to learn.\n\nPrashobh can recommend the right Python learning path based on your current level:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+  /* ════════════════════════════════
+     GENAI — PRACTICAL & BUSINESS
+  ════════════════════════════════ */
+  {
+    p: /how (can|do) (i|we|a business|companies|organisations) (use|adopt|implement|apply|leverage|start using) (genai|generative ai|ai|llm|chatgpt|claude) (for|in) (business|enterprise|work|my (company|organisation|team|startup))/i,
+    q: ['how can i use genai for business','how to adopt ai in enterprise','how to implement generative ai','how to apply llm in business','how to leverage chatgpt for work','how to start using ai in my company','how can companies use generative ai'],
+    a: (_) => `GenAI adoption in business typically follows this path:\n\n1. Identify high-value use cases (customer support, document processing, internal knowledge base)\n2. Start with off-the-shelf tools (ChatGPT, Copilot) for quick wins\n3. Build custom RAG systems for domain-specific knowledge\n4. Move to agentic workflows for multi-step automation\n5. Implement governance, monitoring, and evaluation frameworks\n\nThe biggest mistake organisations make: starting with technology before identifying the problem.\n\nPrashobh helps businesses navigate exactly this journey — from strategy to production:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+  {
+    p: /what is (prompt engineering|prompting|prompt design)|explain prompt engineering|how (to|do i|do you) (write|design|create|craft|improve) (prompts|a prompt|good prompts)|prompt engineering (tutorial|guide|explained|tips|basics)/i,
+    q: ['what is prompt engineering','explain prompt engineering','how to write good prompts','how to design prompts','prompt engineering tutorial','prompt engineering guide','prompt engineering explained','how to craft prompts','how to improve prompts'],
+    a: (_) => `Prompt engineering is the practice of designing inputs to AI models (like GPT or Claude) to get the most accurate, useful, and consistent outputs.\n\nKey techniques:\n• Zero-shot — just describe the task directly\n• Few-shot — give examples of input/output pairs\n• Chain-of-thought — ask the model to reason step by step\n• Role prompting — "You are an expert in..."\n• Output formatting — specify JSON, bullet points, tables\n\nIt's a critical skill for anyone building GenAI applications — small changes in wording can dramatically change output quality.\n\nPrashobh covers this in his GenAI training sessions:\n\n📅 https://calendly.com/prashobhpaulnambadan\n📧 prashobhpaulnambadan@gmail.com`
+  },
+
+
+  /* ════════════════════════════════
+     COMPANY — CURRENT / PREVIOUS / FIRST
+  ════════════════════════════════ */
+  {
+    p: /what('?s| is) his (current|present) (company|employer|organisation|organization|workplace|firm|job|place of work)|where (is he|does he) (working|currently working|work now|employed)(currently| now)?|which (company|organisation|firm) (is he|does he) (working at|work for|work at)( now| currently)?/i,
+    q: ["what is his current company","what's his current company","where is he working","where does he work now","which company is he working at","what is his current employer","where is he currently employed","current company","his present company","where does he currently work"],
+    a: (_) => `He is currently working at Qualizeal, as an AI Architect & Strategy Planner within their AI Think Tank / Center of Excellence.\n\nHe joined in January 2026 and leads agentic AI enterprise initiatives, AI architecture strategy, and GenAI adoption programs.\n\nAnything else you'd like to know?\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /what('?s| is| was) his (previous|last|prior|former|most recent) (company|employer|organisation|organization|workplace|firm|job|role)|which (company|organisation) (was he|did he|has he) (working at|work for|work at|been at) (before|previously|prior|last)/i,
+    q: ["what is his previous company","what was his last company","what was his prior employer","which company did he work at before","his former company","his last job","most recent company before current","previous employer","where was he before qualizeal","where did he work before"],
+    a: (_) => `Before his current role, Prashobh was at Tech Mahindra as a Technical Architect in Data Science, from June 2023 to January 2026.\n\nHe led Generative AI and Agentic AI enterprise implementations, designed multi-agent orchestration frameworks, and mentored global AI teams there.\n\nWant to know more about his full career?\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /what('?s| is| was) his (first|earliest|initial|starting) (company|employer|organisation|job|role|career)|which (was his first|company did he start|was the first company)|where did he (start|begin) (his career|working|his professional journey)/i,
+    q: ["what was his first company","which was his first job","where did he start his career","his first employer","his earliest job","what was his starting company","where did he begin working","his first role","his career start","first company he worked for"],
+    a: (_) => `Prashobh started his career at TCS — Tata Consultancy Services — as an AI & Robotics Engineer, from February 2015 to March 2017.\n\nHe built AI-driven customer analytics and NLP models for enterprise clients including Amex.\n\nA solid foundation that set the stage for 13+ years in AI.\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /list (all |his )?(companies|employers|organisations|places|firms) (he (has |have )?)?(worked (at|for)|been employed)|all (companies|employers) (he has worked|prashobh has worked|he worked)|his (full |complete |entire )?(work|career|employment|job) (history|journey|path|timeline)/i,
+    q: ['list all companies he worked at','all companies prashobh worked for','his full work history','his complete career timeline','all his employers','list of companies','his employment history','his job history','his career path','where all has he worked'],
+    a: (_) => `Here is Prashobh's complete career timeline:\n\n🏢 Qualizeal — AI Architect & Strategy Planner (Jan 2026 – Present)\n🏢 Tech Mahindra — Technical Architect, Data Science (Jun 2023 – Jan 2026)\n🏢 Yash Technologies — Senior Data Scientist (Aug 2022 – Jun 2023)\n🏢 Brane Enterprises — Associate Solutions Leader (Apr 2021 – Aug 2022)\n🏢 Primera Medical Technologies — Sr. NLP Engineer (Apr 2017 – Mar 2021)\n🏢 TCS (Tata Consultancy Services) — AI & Robotics Engineer (Feb 2015 – Mar 2017)\n\n13+ years across healthcare, BFSI, robotics, and enterprise GenAI.\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+
+  /* ════════════════════════════════
+     EDUCATION — PRECISE QUERIES
+  ════════════════════════════════ */
+  {
+    p: /what('?s| is| was) his (educational?|academic|qualification|degree|education) (background|qualification|details?|history|summary)|tell me (about )?his (education|qualification|academic background|degrees?)|what (has he|did he) (studied|study)|what (are|were) his (qualifications?|degrees?|academics?)/i,
+    q: ["what is his educational background","what are his qualifications","tell me about his education","what did he study","what are his degrees","his academic background","his qualification details","what has he studied","education summary","academic qualification"],
+    a: (_) => `Prashobh holds two degrees:\n\n🎓 M.Tech in Knowledge Engineering (AI Specialization)\n   SRM University — 2012 to 2014\n\n🎓 B.Tech in Computer Science\n   JNTU Hyderabad — 2008 to 2012\n\nHis academic foundation has always been rooted in AI and intelligent systems — which directly shaped his 13+ year career in the field.\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /when (did he|was) (complete|finish|do|study|attend|graduate from|get|learn) (his )?(b\.?tech|bachelor|undergraduate|ug|btech)|where (did he|was) (study|do|complete|finish|learn) (his )?(b\.?tech|bachelor|undergraduate|ug|btech)|(b\.?tech|bachelor|undergraduate) (details?|college|university|year|when|where|from)/i,
+    q: ["when did he do his btech","where did he study btech","when and where did he learn btech","btech details","his bachelor degree","undergraduate degree details","which college for btech","btech year","btech university","when did he complete btech","where did he do his bachelor"],
+    a: (_) => `Prashobh completed his B.Tech in Computer Science from JNTU Hyderabad (Jawaharlal Nehru Technological University, Hyderabad) between 2008 and 2012.\n\nThis gave him a strong foundation in computer science fundamentals that later shaped his AI career.\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /when (did he|was) (complete|finish|do|study|attend|graduate from|get) (his )?(m\.?tech|master|postgraduate|pg|mtech|post.?grad)|where (did he|was) (study|do|complete|finish) (his )?(m\.?tech|master|postgraduate|pg|mtech)|(m\.?tech|master|postgraduate) (details?|college|university|year|when|where|from)/i,
+    q: ["when did he do his mtech","where did he study mtech","mtech details","his masters degree","postgraduate degree details","which college for mtech","mtech year","mtech university","when did he complete mtech","where did he do his masters","his pg details"],
+    a: (_) => `Prashobh completed his M.Tech in Knowledge Engineering with AI Specialization from SRM University (SRM Institute of Science and Technology) between 2012 and 2014.\n\nKnowledge Engineering covers AI, ontology, knowledge representation, and intelligent systems — a perfect academic fit for his career path.\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /what (is|was) his (specialization|specialisation|major|focus|stream|branch) (in |during |for )?(m\.?tech|mtech|master|b\.?tech|btech|bachelor|college|studies?|degree)|which (stream|branch|specialization|major) (did he|was he) (study|take|choose|in)/i,
+    q: ["what is his specialization in mtech","what was his major","his specialization in college","which stream did he study","his branch in btech","his mtech specialization","his focus area in masters","what did he specialize in","his study stream"],
+    a: (_) => `His specializations:\n\n• M.Tech — Knowledge Engineering with AI Specialization (SRM University, 2012–2014)\n• B.Tech — Computer Science (JNTU Hyderabad, 2008–2012)\n\nKnowledge Engineering is a niche AI discipline covering intelligent systems, ontologies, and knowledge representation — which directly feeds into his current work on agentic AI and enterprise knowledge systems.\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /which (university|college|institution|school|institute) (did he|does he) (attend|go to|study at|graduate from)|what (university|college|institution) (is he from|did he go to|did he study at|graduated from)|(srm|jntu|hyderabad university|jawaharlal nehru) (university|college)?/i,
+    q: ["which university did he attend","which college did he go to","what university is he from","which institution did he study at","srm university","jntu hyderabad","his college name","which school did he attend","which institute","university details"],
+    a: (_) => `He attended two universities:\n\n🏛️ SRM University (SRM Institute of Science and Technology)\n   — M.Tech, Knowledge Engineering with AI Specialization (2012–2014)\n\n🏛️ JNTU Hyderabad (Jawaharlal Nehru Technological University)\n   — B.Tech, Computer Science (2008–2012)\n\nBoth are well-regarded institutions in India's engineering and technology landscape.\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+  {
+    p: /when did he (graduate|finish (his )?studies|complete (his )?education|pass out)|what year (did he graduate|was he|did he finish|did he complete (his )?degree)/i,
+    q: ["when did he graduate","what year did he graduate","when did he finish his studies","when did he complete his education","what year did he pass out","when did he finish college","year of graduation"],
+    a: (_) => `His graduation timeline:\n\n• B.Tech (JNTU Hyderabad) — Completed in 2012\n• M.Tech (SRM University) — Completed in 2014\n\nHe began his professional career at TCS in February 2015, shortly after completing his postgraduate degree.\n\n📅 https://calendly.com/prashobhpaulnambadan`
+  },
+
+];
+
+/* ── Smart fallback — assigned task limits ── */
+function fallback(){
+  return `That's outside my assigned task limits. 🙂\n\nI'm specifically built to handle questions about Prashobh's work, AI expertise, and services — general knowledge, trivia, or unrelated topics are beyond my scope.\n\nIs there something about his work or services I can help with?`;
+}
+
+/* ── Normalise text for matching ── */
+function normalise(t){
+  return t.toLowerCase()
+    .replace(/['']/g,"'")
+    .replace(/[""]/g,'"')
+    .trim();
+}
+
+/* ── State ── */
+let chatOpen=false, isTyping=false, booted=false, typingEl=null;
+const chatWin  = document.getElementById('chat-win');
+const chatMsgs = document.getElementById('chat-msgs');
+const chatInput= document.getElementById('chat-input');
+const chatQR   = document.getElementById('chat-qr');
+const cwBadge  = document.getElementById('cw-badge');
+
+function toggleChat(){
+  chatOpen=!chatOpen;
+  chatWin.classList.toggle('open',chatOpen);
+  if(chatOpen&&!booted){
+    booted=true;
+    addMsg('bot',"Hi there! 👋\n\nI'm Prashobh's AI assistant — here to help you explore his work, services, or find the right way to connect.\n\nWhat brings you here today?");
+  }
+  if(chatOpen)setTimeout(()=>chatInput.focus(),350);
+}
+
+window.sendQuick = function(t){ chatQR.style.display='none'; process(t); };
+window.sendMsg   = function(){
+  const t=chatInput.value.trim();
+  if(!t||isTyping)return;
+  chatInput.value='';
+  chatQR.style.display='none';
+  process(t);
+};
+
+/* ═══════════════════════════════════════════════════════
+   SMART MATCH ENGINE
+   Three-tier: Regex (exact) → TF-IDF cosine (fuzzy) → Fallback
+═══════════════════════════════════════════════════════ */
+
+/* ── Build corpus from KB entries ── */
+/* Each KB entry must have a q:[] array of natural phrases  */
+/* The engine indexes them at boot, then scores at query time */
+
+/* ── Text utilities ── */
+const STOP = new Set(['i','a','an','the','is','are','was','were','be','been',
+  'have','has','had','do','does','did','will','would','could','should','may',
+  'might','shall','can','need','dare','ought','used','to','of','in','on','at',
+  'by','for','with','about','as','into','through','during','before','after',
+  'above','below','from','up','down','out','off','over','under','then','once',
+  'and','but','or','nor','so','yet','both','either','neither','not','no',
+  'very','just','also','more','most','any','some','all','he','she','they',
+  'we','you','it','his','her','their','our','your','its','my','me','him','us',
+  'them','this','that','these','those','what','which','who','whom','whose',
+  'when','where','why','how','if','although','because','since','while']);
+
+function tokenise(text) {
+  return text.toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter(t => t.length > 1 && !STOP.has(t));
+}
+
+function tfVector(tokens) {
+  const freq = {};
+  tokens.forEach(t => { freq[t] = (freq[t] || 0) + 1; });
+  Object.keys(freq).forEach(t => { freq[t] /= tokens.length; });
+  return freq;
+}
+
+function cosineSim(a, b) {
+  const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+  let dot = 0, magA = 0, magB = 0;
+  keys.forEach(k => {
+    const va = a[k] || 0, vb = b[k] || 0;
+    dot  += va * vb;
+    magA += va * va;
+    magB += vb * vb;
+  });
+  return (magA && magB) ? dot / (Math.sqrt(magA) * Math.sqrt(magB)) : 0;
+}
+
+/* ── Index: build once at runtime ── */
+const INDEX = KB
+  .filter(e => e.q && e.q.length)
+  .map(e => ({
+    entry: e,
+    vecs:  e.q.map(q => tfVector(tokenise(q)))
+  }));
+
+/* ── Find best match ── */
+function findBestMatch(userInput) {
+  const norm = normalise(userInput);
+
+  /* Tier 1 — Regex (fast, exact intent) */
+  for (const e of KB) {
+    if (e.p && e.p.test(norm)) return { answer: e.a(norm), tier: 'exact' };
+  }
+
+  /* Tier 2 — TF-IDF cosine similarity */
+  const qVec = tfVector(tokenise(norm));
+  if (Object.keys(qVec).length === 0) return { answer: fallback(), tier: 'fallback' };
+
+  let bestScore = 0, bestEntry = null;
+  for (const { entry, vecs } of INDEX) {
+    for (const vec of vecs) {
+      const score = cosineSim(qVec, vec);
+      if (score > bestScore) { bestScore = score; bestEntry = entry; }
+    }
+  }
+
+  const THRESHOLD = 0.18; /* tune: lower = more matches, higher = stricter */
+  if (bestScore >= THRESHOLD && bestEntry) {
+    return { answer: bestEntry.a(norm), tier: 'fuzzy', score: bestScore };
+  }
+
+  /* Tier 3 — Fallback */
+  return { answer: fallback(), tier: 'fallback' };
+}
+
+/* ── Process pipeline ── */
+function process(text) {
+  addMsg('user', text);
+  showTyping();
+  const { answer, tier, score } = findBestMatch(text);
+  const delay = 450 + Math.random() * 300;
+  setTimeout(() => {
+    hideTyping();
+    addMsg('bot', answer);
+    if (tier === 'exact')    cwBadge.textContent = 'Knowledge base · Exact match';
+    else if (tier === 'fuzzy') cwBadge.textContent = `Knowledge base · Smart match (${Math.round((score||0)*100)}%)`;
+    else                     cwBadge.textContent = 'Knowledge base · Guided response';
+  }, delay);
+}
+
+function addMsg(role, text){
+  const wrap = document.createElement('div');
+  wrap.className = `msg ${role}`;
+  if(role==='bot'){
+    const av=document.createElement('img');
+    av.src='photo.jpg'; av.className='msg-av'; av.alt='';
+    wrap.appendChild(av);
+  }
+  const bub = document.createElement('div');
+  bub.className = 'msg-bub';
+  const urlRx = /(https?:\/\/[^\s]+)/g;
+  text.split('\n').forEach((line,i,arr)=>{
+    line.split(urlRx).forEach(part=>{
+      if(/^https?:\/\//.test(part)){
+        const a=document.createElement('a');
+        a.href=part; a.textContent=part; a.target='_blank';
+        a.style.cssText='color:var(--gold-light);word-break:break-all;text-decoration:underline;';
+        bub.appendChild(a);
+      } else {
+        bub.appendChild(document.createTextNode(part));
+      }
+    });
+    if(i<arr.length-1) bub.appendChild(document.createElement('br'));
+  });
+  wrap.appendChild(bub);
+  chatMsgs.appendChild(wrap);
+  chatMsgs.scrollTop=chatMsgs.scrollHeight;
+}
+
+function showTyping(){
+  isTyping=true;
+  const wrap=document.createElement('div'); wrap.className='msg bot';
+  const av=document.createElement('img');
+  av.src='photo.jpg'; av.className='msg-av'; av.alt='';
+  wrap.appendChild(av);
+  const t=document.createElement('div'); t.className='typing-bub';
+  t.innerHTML='<span></span><span></span><span></span>';
+  wrap.appendChild(t);
+  chatMsgs.appendChild(wrap);
+  chatMsgs.scrollTop=chatMsgs.scrollHeight;
+  typingEl=wrap;
+}
+function hideTyping(){isTyping=false;if(typingEl){typingEl.remove();typingEl=null;}}
+</script>
+</body>
+</html>
