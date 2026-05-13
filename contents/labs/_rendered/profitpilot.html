@@ -1,0 +1,11 @@
+<h1>ProfitPilot v3</h1>
+<p>The third iteration of an NSE-focused analysis stack. Three things make this version different from v1 and v2:</p>
+<ol>
+<li><strong>The backtest gate.</strong> No pick ships unless it would have shipped, profitably, in the backtest window. This is non-negotiable and it's eliminated about 70% of the signals the earlier rules engine would have published.</li>
+<li><strong>FinBERT for sentiment.</strong> Replaces a much simpler bag-of-words sentiment score. Worth the latency. The earlier version was particularly weak on industry-specific phrasing.</li>
+<li><strong>CANSLIM-style fundamentals.</strong> Bolted on next to the technical indicators. Helped filter out signals that were technically clean but fundamentally questionable.</li>
+</ol>
+<h2>What this lab is actually for</h2>
+<p>It's the testbed for "predictable wrongness." The system has known failure modes — it under-fires in low-volatility regimes, it over-fires in earnings season — and those failure modes are stable enough that I can build around them. That's a more useful property than higher average accuracy.</p>
+<h2>What it's not</h2>
+<p>Not an investment platform. Not advice. The repo is open because the patterns are useful, not because the picks should be acted on.</p>

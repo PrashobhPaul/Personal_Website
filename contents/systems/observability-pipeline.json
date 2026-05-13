@@ -1,0 +1,7 @@
+{
+  "title": "*Multi-agent* telemetry pipeline",
+  "tag": "Observability",
+  "description": "Telemetry that captures intent, decision, and counterfactual \u2014 not just latency and token counts. Why APM tooling alone is structurally insufficient for autonomous systems.",
+  "meta": "4 stages \u00b7 OTEL-compat",
+  "stage": "Reference"
+}

@@ -1,0 +1,7 @@
+title: When the *subagent pattern* outperforms the orchestrator
+date: 2026-05-12
+category: Agentic Patterns
+
+Three engagements in, the pattern is clear: file-based handshake contracts between subagents beat any in-memory orchestrator I've tried — for governance auditability alone. The orchestrator becomes the ceremony layer, not the brains.
+
+The trade-off is throughput. The orchestrator pattern is faster end-to-end. But "faster" stops mattering the first time a regulator asks for a replay of a decision the orchestrator made, and the answer is "we don't keep that state."

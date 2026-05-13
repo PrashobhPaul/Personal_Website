@@ -1,0 +1,7 @@
+title: MCP vs A2A is the *wrong question*
+date: 2026-05-08
+category: Protocols
+
+They're complementary, not competing. MCP standardises how agents pick up tools. A2A standardises how agents talk to each other.
+
+The interesting design question is what happens when an A2A-routed message hits an MCP-wrapped tool that fails policy. That's where the governance interface actually lives — not in either protocol on its own, but in the seam between them.

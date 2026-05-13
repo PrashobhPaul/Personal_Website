@@ -1,0 +1,7 @@
+title: The *9th gate* is for the system, not the human
+date: 2026-04-22
+category: Architecture
+
+Originally added a final HITL gate at the docs stage thinking humans needed it. Turns out the gate exists so the system can stop itself — the human is just the witness.
+
+Reframed the whole governance model after that. The gates aren't there because humans don't trust the agents. They're there because the system needs deterministic stop conditions, and a human signature is the cheapest way to manufacture one.

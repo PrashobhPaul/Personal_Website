@@ -1,0 +1,7 @@
+title: A small win on a *review cycle*
+date: 2026-05-03
+category: Governance
+
+Switched a multi-agent code review loop from "all agents weigh in" to "agents file disagreements, gate decides". Cycle time dropped 40%.
+
+Lesson: in governed systems, disagreement is more useful than consensus — if you can route it. Most multi-agent frameworks try to converge on agreement. The interesting work is in surfacing disagreement cleanly so a human (or a deterministic gate) can decide.

@@ -1,0 +1,14 @@
+<h1>IPLBuzz</h1>
+<p>A working answer to the question: "what's the smallest, most disciplined prediction system you can build that beats the LLM-in-the-loop version on the failure modes that matter?"</p>
+<h2>What's in the engine</h2>
+<ul>
+<li>A statistical model of team-vs-team performance across recent IPL windows</li>
+<li>Player-form weighting with explicit decay</li>
+<li>Conditional adjustments for venue, toss outcome, and pitch type</li>
+<li>A confidence interval reported alongside every prediction</li>
+</ul>
+<p>No LLM in the prediction path. That's deliberate. The prediction part is a deterministic problem, and treating it that way means I can reason about its failure modes in a way I cannot with an LLM-in-the-loop equivalent.</p>
+<h2>Where the LLM lives</h2>
+<p>The LLM lives in the <strong>narrative</strong> layer. The same statistical output can be rendered as commentary in three different voices — a stat-heavy analyst voice, a fan voice, a contrarian voice. That's an interesting application for LLMs: stable input, varied stylistic output, with no consequence to getting the style "wrong."</p>
+<h2>What this lab is for</h2>
+<p>It's a study in topology. Where does the LLM belong, and where does it not? IPLBuzz is the version where it belongs <em>after</em> the deterministic core, not inside it.</p>

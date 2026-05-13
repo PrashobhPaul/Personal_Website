@@ -1,0 +1,7 @@
+{
+  "title": "Layered *governance stack*",
+  "tag": "Governed SDLC",
+  "description": "Four horizontal layers separate policy from gates from topology from artifacts \u2014 so each can evolve without breaking the others. The shape behind a regulated SDLC agent program.",
+  "meta": "4 layers \u00b7 9 gates",
+  "stage": "Production"
+}

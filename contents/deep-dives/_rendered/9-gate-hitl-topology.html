@@ -1,0 +1,26 @@
+<h1>The shape of governed agentic SDLC</h1>
+<p>Most agentic SDLC stacks I see in the wild treat governance as the last thing to wire — a review queue bolted onto an otherwise autonomous pipeline. That works until it doesn't, which is usually the day a regulator asks "who approved this commit, and against which policy?"</p>
+<p>The pattern that's actually held up across the engagements I've shipped is the opposite: governance as the <strong>control plane</strong>, with agents as managed actors inside it.</p>
+<h2>Five agents, nine gates</h2>
+<p>The 5-agent topology splits the SDLC into roles that mirror what humans do anyway:</p>
+<ul>
+<li><strong>Feature Builder</strong> — turns intent into a structured feature spec</li>
+<li><strong>Developer</strong> — writes the code</li>
+<li><strong>Code Reviewer</strong> — independent review pass against policy + craft</li>
+<li><strong>Test Engineer</strong> — generates and runs tests, including adversarial ones</li>
+<li><strong>Documentation Writer</strong> — produces the artifacts a regulator actually reads</li>
+</ul>
+<p>Nine gates sit between these agents. Four are HITL — the gates that <strong>must</strong> stop unless a human signs — and five are policy gates that the system can clear on its own when policy says so, but cannot bypass when it doesn't.</p>
+<h2>File-based handshake contracts</h2>
+<p>The single most important architectural decision is how agents pass state. In-memory orchestrators (LangGraph, CrewAI, etc.) make this invisible, which is great for prototyping and bad for audit. File-based handshakes — each agent reads from and writes to known artifact locations, with explicit schemas — give you three things for free:</p>
+<ol>
+<li><strong>Replayability</strong> — every state transition is on disk</li>
+<li><strong>Auditability</strong> — the trail is the artifact set, not a log</li>
+<li><strong>Composability</strong> — humans, other agents, and CI can all be participants</li>
+</ol>
+<p>The cost is some throughput. The benefit is that "the gate fired correctly" becomes a file-system question, not a tracing question.</p>
+<h2>When the system disagrees with itself</h2>
+<p>The interesting cases are when the Code Reviewer rejects what the Developer produced. The naive response is to retry the Developer. The better response is to file the disagreement as an artifact and let the next gate decide whether to escalate to a human, retry with a constraint, or accept the disagreement as a known-issue waiver.</p>
+<p>This is where rule-based engines still out-discipline LLMs: disagreement routing is a deterministic problem, and treating it that way is what keeps the system honest.</p>
+<h2>What this is not</h2>
+<p>This is not a framework you adopt off the shelf. It's a topology you instrument inside whichever orchestrator your stack already uses. The 9 gates aren't magic numbers — they're the smallest set that covers intent, code, review, test, and documentation with both policy and human checkpoints. In some engagements, the right number has been 7. In others, 11. The shape matters more than the count.</p>

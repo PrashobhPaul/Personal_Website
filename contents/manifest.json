@@ -1,0 +1,218 @@
+{
+  "generatedAt": "2026-05-13T18:18:02",
+  "deepDives": [
+    {
+      "slug": "9-gate-hitl-topology",
+      "title": "Designing a *9-gate HITL topology* for governed agentic SDLC",
+      "date": "2026-05-12",
+      "hook": "When agents write, review, and test code on your behalf, governance can't be a checklist at the end — it has to be a control plane. A walkthrough of the 5-agent + 9-gate reference architecture, file-based handshake contracts, gate composition, and what happens when an agent disagrees with itself.",
+      "readingTime": "14 min",
+      "html": "contents/deep-dives/_rendered/9-gate-hitl-topology.html",
+      "source": "contents/deep-dives/2026-05-12_9-gate-hitl-topology.md",
+      "kicker": "Featured Deep Dive",
+      "tags": [
+        "governance",
+        "agentic-sdlc",
+        "hitl"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "stlc-on-dotnet",
+      "title": "Agentic AI for *STLC* on .NET",
+      "date": "2026-05-08",
+      "hook": "Why Microsoft Agent Framework over Python-native orchestration for a .NET-heavy test lifecycle — and what the trade-offs actually look like at scale.",
+      "readingTime": "12 min",
+      "html": "contents/deep-dives/_rendered/stlc-on-dotnet.html",
+      "source": "contents/deep-dives/2026-05-08_stlc-on-dotnet.md",
+      "kicker": "Architecture",
+      "tags": [
+        "stlc",
+        "ms-agent-framework",
+        "dotnet"
+      ]
+    },
+    {
+      "slug": "non-determinism",
+      "title": "*Non-determinism* is the physics, not the bug",
+      "date": "2026-04-22",
+      "hook": "Stop treating LLM variance as a defect to engineer away. Treat it as the operating physics of the system and design test, observability, and governance around that.",
+      "readingTime": "10 min",
+      "html": "contents/deep-dives/_rendered/non-determinism.html",
+      "source": "contents/deep-dives/2026-04-22_non-determinism.md",
+      "kicker": "First Principles",
+      "tags": [
+        "evaluation",
+        "testing",
+        "llm"
+      ]
+    },
+    {
+      "slug": "finops-rai",
+      "title": "FinOps meets *Responsible AI*",
+      "date": "2026-04-15",
+      "hook": "An agent that costs $0.40 per task is interesting. An agent that costs $0.40 per task and runs 50,000 times a day is a P&L decision. Responsible AI without unit economics is theatre.",
+      "readingTime": "11 min",
+      "html": "contents/deep-dives/_rendered/finops-rai.html",
+      "source": "contents/deep-dives/2026-04-15_finops-rai.md",
+      "kicker": "Unit Economics",
+      "tags": [
+        "finops",
+        "rai",
+        "economics"
+      ]
+    }
+  ],
+  "labs": [
+    {
+      "slug": "iplbuzz",
+      "title": "IPLBuzz · *match prediction* engine",
+      "date": "2026-05-13",
+      "hook": "Production-grade rule-based statistical match prediction system with a multi-voice NLG narrative layer — no LLM in the prediction path by design. Built to study where rule-based engines still out-discipline LLMs.",
+      "readingTime": "1 min",
+      "html": "contents/labs/_rendered/iplbuzz.html",
+      "source": "contents/labs/iplbuzz.md",
+      "domain": "Sports Analytics · Rule-Based",
+      "status": "Live",
+      "tech": [
+        "React",
+        "Stats Engine",
+        "NLG",
+        "Firebase",
+        "Cloudflare Worker"
+      ]
+    },
+    {
+      "slug": "pachaka-lokam",
+      "title": "Pachaka Lokam · *meal planner*",
+      "date": "2026-05-13",
+      "hook": "Kerala-style household meal planning PWA with pantry-aware suggestions, weekly templates with smart substitution, and maid/milk delivery tracking. Shipped to the Play Store via TWA. Real users, real edge cases.",
+      "readingTime": "1 min",
+      "html": "contents/labs/_rendered/pachaka-lokam.html",
+      "source": "contents/labs/pachaka-lokam.md",
+      "domain": "Household · Pantry-Aware",
+      "status": "Live",
+      "tech": [
+        "PWA",
+        "TWA / Bubblewrap",
+        "GitHub Pages",
+        "Play Store"
+      ]
+    },
+    {
+      "slug": "profitpilot",
+      "title": "ProfitPilot *v3* · NSE analysis pipeline",
+      "date": "2026-05-13",
+      "hook": "Backtest-gated picks pipeline with FinBERT sentiment, CANSLIM fundamentals, and a 20+ indicator rules engine. Deployed as a PWA. The lab where I work out how to keep an ML pipeline honest about its own failure modes.",
+      "readingTime": "1 min",
+      "html": "contents/labs/_rendered/profitpilot.html",
+      "source": "contents/labs/profitpilot.md",
+      "domain": "Capital Markets · ML",
+      "status": "Live",
+      "tech": [
+        "Python",
+        "FinBERT",
+        "CANSLIM",
+        "PWA",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "slug": "rvonwheelz",
+      "title": "RVonWheelz · *community carpool*",
+      "date": "2026-05-13",
+      "hook": "Society carpooling app for a residential community — tab navigation, auto-destination filters, real-time matching. A study in keeping a small, useful product small and useful.",
+      "readingTime": "1 min",
+      "html": "contents/labs/_rendered/rvonwheelz.html",
+      "source": "contents/labs/rvonwheelz.md",
+      "domain": "Community · Mobility",
+      "status": "Live",
+      "tech": [
+        "React",
+        "TypeScript",
+        "Supabase"
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "slug": "subagent-vs-orchestrator",
+      "title": "When the *subagent pattern* outperforms the orchestrator",
+      "date": "2026-05-12",
+      "hook": "Three engagements in, the pattern is clear: file-based handshake contracts between subagents beat any in-memory orchestrator I've tried — for governance auditability alone. The orchestrator becomes the ceremony layer, not the brains.",
+      "readingTime": "1 min",
+      "html": "contents/notes/_rendered/subagent-vs-orchestrator.html",
+      "source": "contents/notes/2026-05-12_subagent-vs-orchestrator.txt",
+      "category": "Agentic Patterns"
+    },
+    {
+      "slug": "mcp-vs-a2a",
+      "title": "MCP vs A2A is the *wrong question*",
+      "date": "2026-05-08",
+      "hook": "They're complementary, not competing. MCP standardises how agents pick up tools. A2A standardises how agents talk to each other.",
+      "readingTime": "1 min",
+      "html": "contents/notes/_rendered/mcp-vs-a2a.html",
+      "source": "contents/notes/2026-05-08_mcp-vs-a2a.txt",
+      "category": "Protocols"
+    },
+    {
+      "slug": "disagreement-routing",
+      "title": "A small win on a *review cycle*",
+      "date": "2026-05-03",
+      "hook": "Switched a multi-agent code review loop from \"all agents weigh in\" to \"agents file disagreements, gate decides\". Cycle time dropped 40%.",
+      "readingTime": "1 min",
+      "html": "contents/notes/_rendered/disagreement-routing.html",
+      "source": "contents/notes/2026-05-03_disagreement-routing.txt",
+      "category": "Governance"
+    },
+    {
+      "slug": "rule-based-engines",
+      "title": "Why I keep coming back to *rule-based* engines",
+      "date": "2026-04-28",
+      "hook": "The ML-enhanced version of ProfitPilot beats the rule-based version on average. The rule-based version beats it on the failure modes I care about.",
+      "readingTime": "1 min",
+      "html": "contents/notes/_rendered/rule-based-engines.html",
+      "source": "contents/notes/2026-04-28_rule-based-engines.txt",
+      "category": "First Principles"
+    },
+    {
+      "slug": "ninth-gate",
+      "title": "The *9th gate* is for the system, not the human",
+      "date": "2026-04-22",
+      "hook": "Originally added a final HITL gate at the docs stage thinking humans needed it. Turns out the gate exists so the system can stop itself — the human is just the witness.",
+      "readingTime": "1 min",
+      "html": "contents/notes/_rendered/ninth-gate.html",
+      "source": "contents/notes/2026-04-22_ninth-gate.txt",
+      "category": "Architecture"
+    }
+  ],
+  "systems": [
+    {
+      "slug": "autonomy-vs-control",
+      "title": "Autonomy *vs* control",
+      "tag": "Topology Choice",
+      "description": "Every agentic system makes a topology choice — even if accidentally. A 2×2 for placing humans, agents, and stop conditions deliberately rather than by default.",
+      "meta": "2×2 · decision frame",
+      "stage": "Method",
+      "image": "contents/systems/autonomy-vs-control.jpg"
+    },
+    {
+      "slug": "governance-stack",
+      "title": "Layered *governance stack*",
+      "tag": "Governed SDLC",
+      "description": "Four horizontal layers separate policy from gates from topology from artifacts — so each can evolve without breaking the others. The shape behind a regulated SDLC agent program.",
+      "meta": "4 layers · 9 gates",
+      "stage": "Production",
+      "image": "contents/systems/governance-stack.jpg"
+    },
+    {
+      "slug": "observability-pipeline",
+      "title": "*Multi-agent* telemetry pipeline",
+      "tag": "Observability",
+      "description": "Telemetry that captures intent, decision, and counterfactual — not just latency and token counts. Why APM tooling alone is structurally insufficient for autonomous systems.",
+      "meta": "4 stages · OTEL-compat",
+      "stage": "Reference",
+      "image": "contents/systems/observability-pipeline.jpg"
+    }
+  ]
+}

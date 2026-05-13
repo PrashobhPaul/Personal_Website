@@ -1,0 +1,13 @@
+<h1>Variance is not the enemy</h1>
+<p>A predictable pattern in early agentic AI work: someone runs the same prompt twice, gets two different outputs, files a bug, and the team spends a week trying to make it deterministic.</p>
+<p>It won't be.</p>
+<p>LLMs are sampling-based by construction. Even with <code>temperature=0</code>, you'll see non-trivial variance from tokenizer changes, hardware non-determinism in floating-point, and provider-side model updates that ship under the same name.</p>
+<p>The mistake isn't accepting variance. The mistake is <strong>designing as if variance were a bug to fix</strong> rather than the physics of the system.</p>
+<h2>What changes when you accept it</h2>
+<p>Three things stop being "edge cases" and start being design parameters:</p>
+<p><strong>Testing.</strong> A test that asserts "output equals string X" is a hostile test of an LLM. The right tests assert <em>properties</em> (does it cite a source? is it on-topic? is the JSON valid?) over distributions of outputs, with statistical confidence bounds.</p>
+<p><strong>Observability.</strong> Logging the single output isn't enough. You need to capture intent, the resolved prompt, the model+version, and ideally a counterfactual ("what would the same prompt have produced with a different seed?"). This is what separates AI observability from APM.</p>
+<p><strong>Governance.</strong> Human review can't ask "is this output correct?" — it has to ask "is this output acceptable for this class of input under our policy?" That's a different question, and it changes who can answer it.</p>
+<h2>The practical reframe</h2>
+<p>Stop trying to make agents deterministic. Start designing for <strong>bounded non-determinism</strong>: a system where the output set is constrained enough to be useful, but no one pretends the output is single-valued.</p>
+<p>The teams that get this build better systems. The teams that don't spend forever chasing reproducibility on a stack that doesn't have it.</p>
